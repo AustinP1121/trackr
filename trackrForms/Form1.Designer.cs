@@ -43,8 +43,8 @@ namespace trackrForms
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -69,20 +69,20 @@ namespace trackrForms
             this.syncToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
@@ -229,15 +229,6 @@ namespace trackrForms
             this.numericUpDown2.Size = new System.Drawing.Size(49, 22);
             this.numericUpDown2.TabIndex = 5;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(458, 374);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 29);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Display Metrics";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -251,6 +242,15 @@ namespace trackrForms
             this.label7.TabIndex = 9;
             this.label7.Text = "Goal";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(458, 374);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 29);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Display Metrics";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 

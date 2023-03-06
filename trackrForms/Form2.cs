@@ -70,5 +70,10 @@ namespace trackrForms
             }
             
         }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
