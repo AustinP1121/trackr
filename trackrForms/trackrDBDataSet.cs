@@ -7,9 +7,12 @@
     }
 }
 
-namespace trackrForms.trackrDBDataSetTableAdapters {
-    
-    
+namespace trackrForms.trackrDBDataSetTableAdapters
+{
+    partial class habitHistoryTableTableAdapter
+    {
+    }
+
     public partial class habitTableTableAdapter {
     }
 }

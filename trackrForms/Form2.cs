@@ -106,5 +106,10 @@ namespace trackrForms
             //  Close form
             Close();
         }
+
+        private void CreateHabit_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
