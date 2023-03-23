@@ -67,9 +67,15 @@ namespace trackrForms
 
         private void createHabitButton_Click(object sender, EventArgs e)
         {
+            
             //  Create table both to test and retrieve largest ID value for insertion into the table.
             trackrDBDataSet.habitTableDataTable newTable = new trackrDBDataSet.habitTableDataTable();
             habitTableTableAdapter.Fill(newTable);
+            trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
+            //var historyAdapter = new habitHistoryTableTableAdapter();
+            //habitHistoryTableTableAdapter h = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
+            //h.Fill(habitHistory);
+            habitHistoryTableTableAdapter1.Fill(habitHistory);
 
             //  Get the amount of entries in the database before editing.
             int initialRowCount = newTable.Rows.Count;
@@ -84,12 +90,35 @@ namespace trackrForms
 
             try
             {
+                int id = newTable.Rows.Count + 1;
+                string name = habitNameTextBox.Text;
+                string type = typeNameComboBox.Text;
+                int goal = typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString());
+                bool positive = pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary";
+                DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
+                bool goalMet = false;
+                if (positive && 0 >= goal)
+                {
+                    goalMet = true;
+                }
+                else if (!positive && 0 <= goal)
+                {
+                    goalMet = true;
+                }
+
+
+                habitTableTableAdapter.Insert(id, name, type, goal, positive, true, 0);
                 //  Insert value based on the user input
+                /*
                 habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 
                     typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString()),
                     pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary", true, 0);
+                */
+                //string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
+                
+                habitHistoryTableTableAdapter1.Insert(name, today, 0, goal, goalMet);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

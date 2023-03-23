@@ -50,6 +50,7 @@ namespace trackrForms
             this.scheduleGroupBox = new System.Windows.Forms.GroupBox();
             this.habitTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
             this.trackrDBDataSet1 = new trackrForms.trackrDBDataSet();
+            this.habitHistoryTableTableAdapter1 = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).BeginInit();
             this.scheduleGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet1)).BeginInit();
@@ -293,6 +294,10 @@ namespace trackrForms
             this.trackrDBDataSet1.DataSetName = "trackrDBDataSet";
             this.trackrDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // habitHistoryTableTableAdapter1
+            // 
+            this.habitHistoryTableTableAdapter1.ClearBeforeFill = true;
+            // 
             // CreateHabit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,5 +350,6 @@ namespace trackrForms
         private System.Windows.Forms.GroupBox scheduleGroupBox;
         private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdapter;
         private trackrDBDataSet trackrDBDataSet1;
+        private trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter habitHistoryTableTableAdapter1;
     }
 }

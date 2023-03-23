@@ -35,7 +35,7 @@ namespace trackrForms
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+            dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
             dateLabel.Visible = true;
             LoadDataFromTable();
 

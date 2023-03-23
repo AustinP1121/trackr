@@ -1612,7 +1612,7 @@ namespace trackrForms.trackrDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::trackrForms.Properties.Settings.Default.trackrDBConnectionString1;
+            this._connection.ConnectionString = global::trackrForms.Properties.Settings.Default.trackrDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
