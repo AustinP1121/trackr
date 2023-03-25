@@ -37,11 +37,46 @@ namespace trackrForms
         {
             dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
             dateLabel.Visible = true;
+            CheckLastDate();
             LoadDataFromTable();
 
             // TODO: This line of code loads data into the 'trackrDBDataSet.habitHistoryTable' table. You can move, or remove it, as needed.
             this.habitHistoryTableTableAdapter.Fill(this.trackrDBDataSet.habitHistoryTable);
         } 
+
+        private void CheckLastDate()
+        {
+            DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
+
+            trackrDBDataSet.habitHistoryTableDataTable habitDates = new trackrDBDataSet.habitHistoryTableDataTable();
+            habitHistoryTableTableAdapter.FillByDateOrder(habitDates);
+
+            DateTime lastDate = DateTime.Parse(habitDates.Rows[0].ItemArray[2].ToString());
+
+            if (lastDate < today)
+            {
+                trackrDBDataSet.habitTableDataTable habits = new trackrDBDataSet.habitTableDataTable();
+                habitTableTableAdapter.FillByCurrentlyTracked(habits);
+
+                for (int currentRow = 0; currentRow < habits.Rows.Count; currentRow++)
+                {
+                    string name = habits.Rows[currentRow].ItemArray[1].ToString();
+                    int goal = Int32.Parse(habits.Rows[currentRow].ItemArray[3].ToString());
+                    bool positive = Boolean.Parse(habits.Rows[currentRow].ItemArray[4].ToString());
+                    bool goalMet = false;
+                    if (positive && 0 >= goal)
+                    {
+                        goalMet = true;
+                    }
+                    else if (!positive && 0 <= goal)
+                    {
+                        goalMet = true;
+                    }
+
+                    habitHistoryTableTableAdapter.Insert(name, today, 0, goal, goalMet);
+                }
+            }
+        }
 
         private void LoadDataFromTable()
         {
@@ -56,7 +91,7 @@ namespace trackrForms
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
 
-            for (int currentRow = 0; currentRow<habitHistory.Rows.Count;currentRow++)
+            for (int currentRow = 0; currentRow < habitHistory.Rows.Count; currentRow++)
             {
                 //Habit Column
                 Label currentHabit = new Label();
@@ -136,6 +171,58 @@ namespace trackrForms
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             //TODO: Write Current Progress into habitHistory data table
+            UploadCurrentProgress();
+        }
+
+        private void UploadCurrentProgress()
+        {
+            string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
+            trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
+            habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
+
+
+
+            for (int row = 0; row < tableLayout.RowCount; row++)
+            {
+                var c = tableLayout.GetControlFromPosition(2, row);
+                string name = tableLayout.GetControlFromPosition(0, row).Text;
+                DataRow[] entry = habitHistory.Select("habit = '" + name + "'");
+                int todaysValue = 0;
+                int todaysGoal = Int32.Parse(tableLayout.GetControlFromPosition(1,row).Text);
+                bool goalMet = false;
+                bool positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+
+                if (c is CheckBox)
+                {
+                    CheckBox chk = (CheckBox)c;
+                    if (chk.Checked)
+                    {
+                        todaysValue = 1;
+                        goalMet = true;
+                    }
+                    else
+                    {
+                        todaysValue = 0;
+                    }
+                }
+                else if (c is NumericUpDown)
+                {
+                    
+                    NumericUpDown num = (NumericUpDown)c;
+                    todaysValue = (int)(num.Value);
+                    if (positive && todaysValue >= todaysGoal)
+                    {
+                        goalMet = true;
+                    }
+                    else if (!positive && todaysValue <= todaysGoal)
+                    {
+                        goalMet = true;
+                    }
+                }
+
+                habitHistoryTableTableAdapter.UpdateTodaysProgress(todaysValue, goalMet, name, DateTime.Parse(today));
+
+            }
         }
 
         private void numericChanged(object sender, EventArgs e)

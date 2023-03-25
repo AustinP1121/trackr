@@ -100,7 +100,7 @@ namespace trackrForms
             this.tableLayout.Location = new System.Drawing.Point(237, 195);
             this.tableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayout.Name = "tableLayout";
-            this.tableLayout.RowCount = 8;
+            this.tableLayout.RowCount = 7;
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
