@@ -30,7 +30,7 @@ namespace trackrForms
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UploadCurrentProgress();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -44,6 +44,8 @@ namespace trackrForms
             this.habitHistoryTableTableAdapter.Fill(this.trackrDBDataSet.habitHistoryTable);
         } 
 
+        //Inputs new entries into habitHistory because it is a new day
+        //Sets a value of todaysValue as 0, until the user inputs values into dashboard
         private void CheckLastDate()
         {
             DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
@@ -174,6 +176,7 @@ namespace trackrForms
             UploadCurrentProgress();
         }
 
+        //The user input on the dashboard gets uploaded into the habitHistory table
         private void UploadCurrentProgress()
         {
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
