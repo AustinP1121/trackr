@@ -2179,7 +2179,7 @@ WHERE  (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = tru
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[3];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, habit, type, currentGoal, isPositive, currentlyTracked, Streak FROM ha" +
@@ -2190,6 +2190,12 @@ WHERE  (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = tru
             this._commandCollection[1].CommandText = "SELECT ID, habit, type, currentGoal, isPositive, currentlyTracked, Streak\r\nFROM  " +
                 "   habitTable\r\nWHERE  (currentlyTracked = true)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "UPDATE habitTable\r\nSET          Streak = ?\r\nWHERE  (habit = ?)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Streak", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Streak", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2463,6 +2469,41 @@ WHERE  (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = tru
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string type, global::System.Nullable<int> currentGoal, bool isPositive, bool currentlyTracked, global::System.Nullable<int> Streak, int Original_ID, string Original_habit, string Original_type, global::System.Nullable<int> Original_currentGoal, bool Original_isPositive, bool Original_currentlyTracked, global::System.Nullable<int> Original_Streak) {
             return this.Update(Original_habit, type, currentGoal, isPositive, currentlyTracked, Streak, Original_ID, Original_habit, Original_type, Original_currentGoal, Original_isPositive, Original_currentlyTracked, Original_Streak);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateStreak(global::System.Nullable<int> Streak, string Original_habit) {
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[2];
+            if ((Streak.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(Streak.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Original_habit == null)) {
+                throw new global::System.ArgumentNullException("Original_habit");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Original_habit));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

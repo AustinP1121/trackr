@@ -92,6 +92,7 @@ namespace trackrForms
             // 
             // tableLayout
             // 
+            this.tableLayout.AutoScroll = true;
             this.tableLayout.ColumnCount = 4;
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));

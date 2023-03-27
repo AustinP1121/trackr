@@ -53,18 +53,50 @@ namespace trackrForms
             trackrDBDataSet.habitHistoryTableDataTable habitDates = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateOrder(habitDates);
 
+            
+
+
             DateTime lastDate = DateTime.Parse(habitDates.Rows[0].ItemArray[2].ToString());
 
             if (lastDate < today)
             {
-                trackrDBDataSet.habitTableDataTable habits = new trackrDBDataSet.habitTableDataTable();
-                habitTableTableAdapter.FillByCurrentlyTracked(habits);
+                //trackrDBDataSet.habitTableDataTable allHabits = new trackrDBDataSet.habitTableDataTable();
+                //habitTableTableAdapter.Fill(allHabits);
+                trackrDBDataSet.habitTableDataTable currentHabits = new trackrDBDataSet.habitTableDataTable();
+                habitTableTableAdapter.FillByCurrentlyTracked(currentHabits);
 
-                for (int currentRow = 0; currentRow < habits.Rows.Count; currentRow++)
+
+
+                if (lastDate.AddDays(1) == today)
                 {
-                    string name = habits.Rows[currentRow].ItemArray[1].ToString();
-                    int goal = Int32.Parse(habits.Rows[currentRow].ItemArray[3].ToString());
-                    bool positive = Boolean.Parse(habits.Rows[currentRow].ItemArray[4].ToString());
+                    trackrDBDataSet.habitHistoryTableDataTable yesterdayHabits = new trackrDBDataSet.habitHistoryTableDataTable();
+                    habitHistoryTableTableAdapter.FillByDateJoining(yesterdayHabits, lastDate);
+
+                    for (int currentRow = 0; currentRow < currentHabits.Rows.Count; currentRow++)
+                    {
+                        string name = currentHabits.Rows[currentRow].ItemArray[1].ToString();
+                        bool goalMet = Boolean.Parse(currentHabits.Rows[currentRow].ItemArray[5].ToString());
+                        int streak = Int32.Parse(currentHabits.Rows[currentRow].ItemArray[10].ToString());
+                        if (goalMet)
+                        {
+                            streak++;
+                        }
+                        else
+                        {
+                            streak = 0;
+                        }
+                        habitTableTableAdapter.UpdateStreak(streak, name);
+                    }
+                }
+                
+                
+                
+
+                for (int currentRow = 0; currentRow < currentHabits.Rows.Count; currentRow++)
+                {
+                    string name = currentHabits.Rows[currentRow].ItemArray[1].ToString();
+                    int goal = Int32.Parse(currentHabits.Rows[currentRow].ItemArray[3].ToString());
+                    bool positive = Boolean.Parse(currentHabits.Rows[currentRow].ItemArray[4].ToString());
                     bool goalMet = false;
                     if (positive && 0 >= goal)
                     {
@@ -92,6 +124,8 @@ namespace trackrForms
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
+
+            tableLayout.RowCount = habitHistory.Rows.Count;
 
             for (int currentRow = 0; currentRow < habitHistory.Rows.Count; currentRow++)
             {
