@@ -72,11 +72,11 @@ namespace trackrForms
                     trackrDBDataSet.habitHistoryTableDataTable yesterdayHabits = new trackrDBDataSet.habitHistoryTableDataTable();
                     habitHistoryTableTableAdapter.FillByDateJoining(yesterdayHabits, lastDate);
 
-                    for (int currentRow = 0; currentRow < currentHabits.Rows.Count; currentRow++)
+                    for (int currentRow = 0; currentRow < yesterdayHabits.Rows.Count; currentRow++)
                     {
-                        string name = currentHabits.Rows[currentRow].ItemArray[1].ToString();
-                        bool goalMet = Boolean.Parse(currentHabits.Rows[currentRow].ItemArray[5].ToString());
-                        int streak = Int32.Parse(currentHabits.Rows[currentRow].ItemArray[10].ToString());
+                        string name = yesterdayHabits.Rows[currentRow].ItemArray[1].ToString();
+                        bool goalMet = Boolean.Parse(yesterdayHabits.Rows[currentRow].ItemArray[5].ToString());
+                        int streak = Int32.Parse(yesterdayHabits.Rows[currentRow].ItemArray[10].ToString());
                         if (goalMet)
                         {
                             streak++;
