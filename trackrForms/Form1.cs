@@ -198,8 +198,9 @@ namespace trackrForms
 
         }
 
-        private void updateDashboardButton_Click(object sender, EventArgs e)
+        private void UpdateDashboardButton_Click(object sender, EventArgs e)
         {
+            UploadCurrentProgress();
             tableLayout.Controls.Clear();
             LoadDataFromTable();
         }
@@ -270,6 +271,12 @@ namespace trackrForms
         private void checkChanged(object sender, EventArgs e)
         {
             //TODO: Conditional  formatting based on if goal is met yet
+        }
+
+        private void displayMetricsButton_Click(object sender, EventArgs e)
+        {
+            CreateMetrics form = new CreateMetrics();
+            form.Show();
         }
     }
 
