@@ -63,7 +63,7 @@ namespace trackrForms
                     if ((bool)row.ItemArray[5] == true)
                         completions++;
                 }
-                string percentCompletion = (completions / habitHistoryTable.Rows.Count * 100).ToString();
+                float percentCompletion = (completions / habitHistoryTable.Rows.Count * 100);
 
                 //      firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
                 DateTime firstDate = (DateTime)habitHistoryTable.Rows[0].ItemArray[2];
@@ -83,7 +83,7 @@ namespace trackrForms
 
                 //  Create a control for the percentCompletion column
                 Label percentCompletionLabel = new Label();
-                percentCompletionLabel.Text = percentCompletion + "%";
+                percentCompletionLabel.Text = String.Format("{0:F2}%", percentCompletion);
                 percentCompletionLabel.Name = "percentCompletion" + i + "Label";
                 percentCompletionLabel.TextAlign = ContentAlignment.MiddleCenter;
                 percentCompletionLabel.Size = new Size(121, 38);
