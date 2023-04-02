@@ -40,13 +40,13 @@ namespace trackrForms
             this.goalColumnLabel = new System.Windows.Forms.Label();
             this.habitColumnLabel = new System.Windows.Forms.Label();
             this.displayMetricsButton = new System.Windows.Forms.Button();
+            this.updateDashboardButton = new System.Windows.Forms.Button();
+            this.dateLabel = new System.Windows.Forms.Label();
             this.habitHistoryTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.trackrDBDataSet = new trackrForms.trackrDBDataSet();
             this.trackrDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.habitHistoryTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
             this.habitTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
-            this.updateDashboardButton = new System.Windows.Forms.Button();
-            this.dateLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.habitHistoryTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet)).BeginInit();
@@ -55,10 +55,10 @@ namespace trackrForms
             // 
             // newHabitButton
             // 
-            this.newHabitButton.Location = new System.Drawing.Point(280, 593);
-            this.newHabitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newHabitButton.Location = new System.Drawing.Point(210, 482);
+            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newHabitButton.Name = "newHabitButton";
-            this.newHabitButton.Size = new System.Drawing.Size(117, 28);
+            this.newHabitButton.Size = new System.Drawing.Size(88, 23);
             this.newHabitButton.TabIndex = 0;
             this.newHabitButton.Text = "New Habit";
             this.newHabitButton.UseVisualStyleBackColor = true;
@@ -72,21 +72,21 @@ namespace trackrForms
             this.syncToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1179, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
@@ -98,19 +98,19 @@ namespace trackrForms
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayout.Location = new System.Drawing.Point(237, 195);
-            this.tableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayout.Location = new System.Drawing.Point(178, 158);
+            this.tableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayout.Name = "tableLayout";
             this.tableLayout.RowCount = 7;
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayout.Size = new System.Drawing.Size(667, 374);
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayout.Size = new System.Drawing.Size(500, 304);
             this.tableLayout.TabIndex = 5;
             // 
             // todaysProgressLabel
@@ -120,9 +120,10 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.todaysProgressLabel.AutoSize = true;
             this.todaysProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.todaysProgressLabel.Location = new System.Drawing.Point(587, 161);
+            this.todaysProgressLabel.Location = new System.Drawing.Point(440, 131);
+            this.todaysProgressLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.todaysProgressLabel.Name = "todaysProgressLabel";
-            this.todaysProgressLabel.Size = new System.Drawing.Size(135, 17);
+            this.todaysProgressLabel.Size = new System.Drawing.Size(104, 13);
             this.todaysProgressLabel.TabIndex = 7;
             this.todaysProgressLabel.Text = "Today\'s Progress";
             this.todaysProgressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -134,9 +135,10 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentStreakLabel.AutoSize = true;
             this.currentStreakLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentStreakLabel.Location = new System.Drawing.Point(767, 161);
+            this.currentStreakLabel.Location = new System.Drawing.Point(575, 131);
+            this.currentStreakLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentStreakLabel.Name = "currentStreakLabel";
-            this.currentStreakLabel.Size = new System.Drawing.Size(114, 17);
+            this.currentStreakLabel.Size = new System.Drawing.Size(89, 13);
             this.currentStreakLabel.TabIndex = 8;
             this.currentStreakLabel.Text = "Current Streak";
             this.currentStreakLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,9 +150,10 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.goalColumnLabel.AutoSize = true;
             this.goalColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goalColumnLabel.Location = new System.Drawing.Point(464, 161);
+            this.goalColumnLabel.Location = new System.Drawing.Point(348, 131);
+            this.goalColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.goalColumnLabel.Name = "goalColumnLabel";
-            this.goalColumnLabel.Size = new System.Drawing.Size(42, 17);
+            this.goalColumnLabel.Size = new System.Drawing.Size(33, 13);
             this.goalColumnLabel.TabIndex = 9;
             this.goalColumnLabel.Text = "Goal";
             this.goalColumnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -162,22 +165,51 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.habitColumnLabel.AutoSize = true;
             this.habitColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.habitColumnLabel.Location = new System.Drawing.Point(294, 161);
+            this.habitColumnLabel.Location = new System.Drawing.Point(220, 131);
+            this.habitColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.habitColumnLabel.Name = "habitColumnLabel";
-            this.habitColumnLabel.Size = new System.Drawing.Size(46, 17);
+            this.habitColumnLabel.Size = new System.Drawing.Size(37, 13);
             this.habitColumnLabel.TabIndex = 0;
             this.habitColumnLabel.Text = "Habit";
             this.habitColumnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // displayMetricsButton
             // 
-            this.displayMetricsButton.Location = new System.Drawing.Point(740, 593);
-            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.displayMetricsButton.Location = new System.Drawing.Point(555, 482);
+            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.displayMetricsButton.Name = "displayMetricsButton";
-            this.displayMetricsButton.Size = new System.Drawing.Size(125, 30);
+            this.displayMetricsButton.Size = new System.Drawing.Size(94, 24);
             this.displayMetricsButton.TabIndex = 6;
             this.displayMetricsButton.Text = "Display Metrics";
             this.displayMetricsButton.UseVisualStyleBackColor = true;
+            this.displayMetricsButton.Click += new System.EventHandler(this.displayMetricsButton_Click);
+            // 
+            // updateDashboardButton
+            // 
+            this.updateDashboardButton.Location = new System.Drawing.Point(363, 482);
+            this.updateDashboardButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateDashboardButton.Name = "updateDashboardButton";
+            this.updateDashboardButton.Size = new System.Drawing.Size(124, 24);
+            this.updateDashboardButton.TabIndex = 7;
+            this.updateDashboardButton.Text = "Update Dashboard";
+            this.updateDashboardButton.UseVisualStyleBackColor = true;
+            this.updateDashboardButton.Click += new System.EventHandler(this.UpdateDashboardButton_Click);
+            // 
+            // dateLabel
+            // 
+            this.dateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(265, 59);
+            this.dateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(340, 31);
+            this.dateLabel.TabIndex = 10;
+            this.dateLabel.Text = "Saturday, March 18 2023";
+            this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dateLabel.Visible = false;
             // 
             // habitHistoryTableBindingSource
             // 
@@ -202,37 +234,11 @@ namespace trackrForms
             // 
             this.habitTableTableAdapter.ClearBeforeFill = true;
             // 
-            // updateDashboardButton
-            // 
-            this.updateDashboardButton.Location = new System.Drawing.Point(484, 593);
-            this.updateDashboardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.updateDashboardButton.Name = "updateDashboardButton";
-            this.updateDashboardButton.Size = new System.Drawing.Size(165, 30);
-            this.updateDashboardButton.TabIndex = 7;
-            this.updateDashboardButton.Text = "Update Dashboard";
-            this.updateDashboardButton.UseVisualStyleBackColor = true;
-            this.updateDashboardButton.Click += new System.EventHandler(this.updateDashboardButton_Click);
-            // 
-            // dateLabel
-            // 
-            this.dateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLabel.Location = new System.Drawing.Point(353, 73);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(420, 39);
-            this.dateLabel.TabIndex = 10;
-            this.dateLabel.Text = "Saturday, March 18 2023";
-            this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dateLabel.Visible = false;
-            // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 690);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.currentStreakLabel);
             this.Controls.Add(this.todaysProgressLabel);
@@ -244,7 +250,7 @@ namespace trackrForms
             this.Controls.Add(this.newHabitButton);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Dashboard";
             this.Text = "trackr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
