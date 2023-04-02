@@ -122,6 +122,14 @@ namespace trackrForms
             //Display line chart for numerical
 
             Control C = (Control)sender;
+
+            TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
+
+            int row = p.Row;
+
+            //Get the text of the habit label
+            string name = tableLayout.GetControlFromPosition(0, row).Text;
+
         }
     }
 }
