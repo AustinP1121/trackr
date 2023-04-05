@@ -47,3 +47,4 @@ C:\Users\jtvog\Downloads\trackr-Emerson\trackr-Emerson\trackrForms\obj\Debug\tra
 C:\Users\jtvog\Downloads\trackr-Emerson\trackr-Emerson\trackrForms\obj\Debug\trackrForms.pdb
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\Debug\trackrDB.accdb
 C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.createMetrics.resources
+C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.EditHabits.resources

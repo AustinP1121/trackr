@@ -40,7 +40,7 @@ namespace trackrForms
             this.goalColumnLabel = new System.Windows.Forms.Label();
             this.habitColumnLabel = new System.Windows.Forms.Label();
             this.displayMetricsButton = new System.Windows.Forms.Button();
-            this.updateDashboardButton = new System.Windows.Forms.Button();
+            this.editHabitsButton = new System.Windows.Forms.Button();
             this.dateLabel = new System.Windows.Forms.Label();
             this.habitHistoryTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.trackrDBDataSet = new trackrForms.trackrDBDataSet();
@@ -56,7 +56,7 @@ namespace trackrForms
             // newHabitButton
             // 
             this.newHabitButton.Location = new System.Drawing.Point(210, 482);
-            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2);
             this.newHabitButton.Name = "newHabitButton";
             this.newHabitButton.Size = new System.Drawing.Size(88, 23);
             this.newHabitButton.TabIndex = 0;
@@ -92,6 +92,7 @@ namespace trackrForms
             // 
             // tableLayout
             // 
+            this.tableLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayout.AutoScroll = true;
             this.tableLayout.ColumnCount = 4;
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -99,7 +100,7 @@ namespace trackrForms
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.Location = new System.Drawing.Point(178, 158);
-            this.tableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayout.Name = "tableLayout";
             this.tableLayout.RowCount = 7;
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
@@ -112,6 +113,7 @@ namespace trackrForms
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayout.Size = new System.Drawing.Size(500, 304);
             this.tableLayout.TabIndex = 5;
+            this.tableLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayout_Paint);
             // 
             // todaysProgressLabel
             // 
@@ -176,7 +178,7 @@ namespace trackrForms
             // displayMetricsButton
             // 
             this.displayMetricsButton.Location = new System.Drawing.Point(555, 482);
-            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2);
             this.displayMetricsButton.Name = "displayMetricsButton";
             this.displayMetricsButton.Size = new System.Drawing.Size(94, 24);
             this.displayMetricsButton.TabIndex = 6;
@@ -184,16 +186,16 @@ namespace trackrForms
             this.displayMetricsButton.UseVisualStyleBackColor = true;
             this.displayMetricsButton.Click += new System.EventHandler(this.displayMetricsButton_Click);
             // 
-            // updateDashboardButton
+            // editHabitsButton
             // 
-            this.updateDashboardButton.Location = new System.Drawing.Point(363, 482);
-            this.updateDashboardButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.updateDashboardButton.Name = "updateDashboardButton";
-            this.updateDashboardButton.Size = new System.Drawing.Size(124, 24);
-            this.updateDashboardButton.TabIndex = 7;
-            this.updateDashboardButton.Text = "Update Dashboard";
-            this.updateDashboardButton.UseVisualStyleBackColor = true;
-            this.updateDashboardButton.Click += new System.EventHandler(this.UpdateDashboardButton_Click);
+            this.editHabitsButton.Location = new System.Drawing.Point(378, 482);
+            this.editHabitsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.editHabitsButton.Name = "editHabitsButton";
+            this.editHabitsButton.Size = new System.Drawing.Size(91, 24);
+            this.editHabitsButton.TabIndex = 7;
+            this.editHabitsButton.Text = "Edit Habits";
+            this.editHabitsButton.UseVisualStyleBackColor = true;
+            this.editHabitsButton.Click += new System.EventHandler(this.EditHabitsButton_Click);
             // 
             // dateLabel
             // 
@@ -242,7 +244,7 @@ namespace trackrForms
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.currentStreakLabel);
             this.Controls.Add(this.todaysProgressLabel);
-            this.Controls.Add(this.updateDashboardButton);
+            this.Controls.Add(this.editHabitsButton);
             this.Controls.Add(this.displayMetricsButton);
             this.Controls.Add(this.goalColumnLabel);
             this.Controls.Add(this.tableLayout);
@@ -250,7 +252,7 @@ namespace trackrForms
             this.Controls.Add(this.newHabitButton);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dashboard";
             this.Text = "trackr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
@@ -282,7 +284,7 @@ namespace trackrForms
         private System.Windows.Forms.BindingSource habitHistoryTableBindingSource;
         private trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter habitHistoryTableTableAdapter;
         private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdapter;
-        private System.Windows.Forms.Button updateDashboardButton;
+        private System.Windows.Forms.Button editHabitsButton;
         private System.Windows.Forms.Label dateLabel;
     }
 }
