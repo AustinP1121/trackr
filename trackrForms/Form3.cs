@@ -51,7 +51,7 @@ namespace trackrForms
 
                 //  Using the name of the habit, collect all instances of the habit in habitHistoryTable with dates in ascending order.
                 //  Also collects whether or not the habit was completed on a given day.
-                habitHistoryTableTableAdapter1.FillByHabitNameAscendingDate(habitHistoryTable, habit);
+                habitHistoryTableTableAdapter1.FillByHabit(habitHistoryTable, habit);
 
               //  Collect data about habit name, percent completion, and firstDate
                 
@@ -120,10 +120,8 @@ namespace trackrForms
                         for (i= 0; i<habitHistoryTable.Rows.Count; i++)
                         {
                             dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
-                            dataY[i] = i;
-                                //Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);
-                            
-                                                           
+                            /*if(dataX[i] != DateTime.Today)*/
+                            dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);                            
                         }
                         double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
 
@@ -159,10 +157,6 @@ namespace trackrForms
                 pie.OutlineSize = 2;
                 pie.SliceFillColors = new Color[] { color1, color2 };
 
-
-
-
-               
                 plt.SaveFig("pie_donutText.png");
                 new ScottPlot.FormsPlotViewer(plt).ShowDialog();
                 /*
@@ -170,8 +164,6 @@ namespace trackrForms
                 pb1.ImageLocation = "hamster.jpg";
                 pb1.SizeMode = PictureBoxSizeMode.AutoSize;*/
                 //tableLayout.Controls.Add(plt, 3, i - emptyRows);
-
-
             }
       
         }

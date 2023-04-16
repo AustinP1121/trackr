@@ -84,3 +84,13 @@ C:\Users\Caleb\Source\Repos\lbjmsu\trackr\trackrForms\bin\Debug\System.Numerics.
 C:\Users\Caleb\Source\Repos\lbjmsu\trackr\trackrForms\bin\Debug\System.ValueTuple.xml
 C:\Users\Caleb\Source\Repos\lbjmsu\trackr\trackrForms\obj\Debug\trackrForms.GraphForm.resources
 C:\Users\Caleb\Source\Repos\lbjmsu\trackr\trackrForms\obj\Debug\trackrForms.csproj.CopyComplete
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\ScottPlot.dll
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\ScottPlot.WinForms.dll
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.Drawing.Common.dll
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.ValueTuple.dll
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\ScottPlot.xml
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.ValueTuple.xml
+C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.GraphForm.resources
+C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.csproj.CopyComplete
