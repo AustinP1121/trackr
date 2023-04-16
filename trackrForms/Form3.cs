@@ -129,7 +129,7 @@ namespace trackrForms
                     scaPlt.XAxis.DateTimeFormat(true);
                     scaPlt.AddScatter(xs, dataY);
                     new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
-                    MessageBox.Show(i.ToString());
+                    /*MessageBox.Show(i.ToString());*/
                     continue;
                 }
             //This shows the pie chart 
