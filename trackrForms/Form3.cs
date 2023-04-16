@@ -13,13 +13,15 @@ namespace trackrForms
 {
     public partial class CreateMetrics : Form
     {
+        public static string SetValueForCompletion = "";  
+
         public CreateMetrics()
         {
             InitializeComponent();
             FillMetricsTable();
         }
 
-        private void FillMetricsTable()
+        public void FillMetricsTable()
         {
             //  Need to retrieve habit name, count of a certain habit, and the firstDate of completion.
             //  All of these can be found in the habitHistoryTable
@@ -65,7 +67,7 @@ namespace trackrForms
                 }
                 float percentCompletion = (completions / habitHistoryTable.Rows.Count * 100);
 
-                //      firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
+                //firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
                 DateTime firstDate = (DateTime)habitHistoryTable.Rows[0].ItemArray[2];
 
               //  Add controls for the habit name, percent completion, and firstDate
@@ -96,7 +98,7 @@ namespace trackrForms
                 dateTimeLabel.TextAlign = ContentAlignment.MiddleCenter;
                 dateTimeLabel.Size = new Size(121, 38);
                 tableLayout.Controls.Add(dateTimeLabel, 2, i - emptyRows);
-
+                /*
                 //Create column for Graphing button
                 Button graphButton = new Button();
                 graphButton.Text = "Graph!";
@@ -104,8 +106,74 @@ namespace trackrForms
                 tableLayout.Controls.Add(graphButton, 3, i - emptyRows);
 
                 graphButton.Click += new System.EventHandler(graphButton_Click);
+                */
+                
+                foreach (DataRow row in habitTable.Rows)
+                {
+                    if ((string)row.ItemArray[2] == "Numerical")
+                    {
+                        //This creates the line graph if the habit is a numerical habit
+                        //This creates the arrays for the x and y axis
+                        DateTime[] dataX = new DateTime[habitHistoryTable.Rows.Count];
+                        double[] dataY=new double[habitHistoryTable.Rows.Count];                       
+
+                        for (i= 0; i<habitHistoryTable.Rows.Count; i++)
+                        {
+                            dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
+                            dataY[i] = i;
+                                //Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);
+                            
+                                                           
+                        }
+                        double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
+
+                        var scaPlt = new ScottPlot.Plot(400, 300);
+                        scaPlt.Title(habitName);
+
+                        scaPlt.XAxis.DateTimeFormat(true);
+                        scaPlt.AddScatter(xs, dataY);
+                        new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
+                        continue;
+                    }
+                    else 
+                        continue;
+                }
+            //This shows the pie chart 
+            //It currently shows for both numerical and binary
+                var plt = new ScottPlot.Plot();
+                plt.Title(habitName);
+
+                double[] values = { percentCompletion, 100 - percentCompletion };
+                string[] labels = { "Completion Rate", "Incomplete Rate"};
+                string centerText= percentCompletionLabel.Text;
+
+                Color color1 = Color.FromArgb(255, 0, 150, 200);
+                Color color2 = Color.FromArgb(100, 0, 150, 200);
+                
+                var pie = plt.AddPie(values);
+                pie.SliceLabels = labels;
+                plt.Legend();
+                pie.Size=.7;
+                pie.DonutSize = .5;
+                pie.DonutLabel = centerText;
+                pie.OutlineSize = 2;
+                pie.SliceFillColors = new Color[] { color1, color2 };
+
+
+
+
+               
+                plt.SaveFig("pie_donutText.png");
+                new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+                /*
+                PictureBox pb1 = new PictureBox();           
+                pb1.ImageLocation = "hamster.jpg";
+                pb1.SizeMode = PictureBoxSizeMode.AutoSize;*/
+                //tableLayout.Controls.Add(plt, 3, i - emptyRows);
+
 
             }
+      
         }
 
         //  Closes this form
@@ -121,15 +189,9 @@ namespace trackrForms
             //Display pie chart for binary
             //Display line chart for numerical
 
+            var myForm = new GraphForm();
+            myForm.Show();
             Control C = (Control)sender;
-
-            TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
-
-            int row = p.Row;
-
-            //Get the text of the habit label
-            string name = tableLayout.GetControlFromPosition(0, row).Text;
-
         }
     }
 }
