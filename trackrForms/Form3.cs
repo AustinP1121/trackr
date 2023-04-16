@@ -108,33 +108,29 @@ namespace trackrForms
                 graphButton.Click += new System.EventHandler(graphButton_Click);
                 */
                 
-                foreach (DataRow row in habitTable.Rows)
+                if ((string)habitRow.ItemArray[2] == "Numerical")
                 {
-                    if ((string)row.ItemArray[2] == "Numerical")
+                    //This creates the line graph if the habit is a numerical habit
+                    //This creates the arrays for the x and y axis
+                    DateTime[] dataX = new DateTime[habitHistoryTable.Rows.Count];
+                    double[] dataY=new double[habitHistoryTable.Rows.Count];                       
+
+                    for (i= 0; i<habitHistoryTable.Rows.Count; i++)
                     {
-                        //This creates the line graph if the habit is a numerical habit
-                        //This creates the arrays for the x and y axis
-                        DateTime[] dataX = new DateTime[habitHistoryTable.Rows.Count];
-                        double[] dataY=new double[habitHistoryTable.Rows.Count];                       
-
-                        for (i= 0; i<habitHistoryTable.Rows.Count; i++)
-                        {
-                            dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
-                            /*if(dataX[i] != DateTime.Today)*/
-                            dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);                            
-                        }
-                        double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
-
-                        var scaPlt = new ScottPlot.Plot(400, 300);
-                        scaPlt.Title(habitName);
-
-                        scaPlt.XAxis.DateTimeFormat(true);
-                        scaPlt.AddScatter(xs, dataY);
-                        new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
-                        continue;
+                        dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
+                        /*if(dataX[i] != DateTime.Today)*/
+                        dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);                            
                     }
-                    else 
-                        continue;
+                    double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
+
+                    var scaPlt = new ScottPlot.Plot(400, 300);
+                    scaPlt.Title(habitName);
+
+                    scaPlt.XAxis.DateTimeFormat(true);
+                    scaPlt.AddScatter(xs, dataY);
+                    new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
+                    MessageBox.Show(i.ToString());
+                    continue;
                 }
             //This shows the pie chart 
             //It currently shows for both numerical and binary
