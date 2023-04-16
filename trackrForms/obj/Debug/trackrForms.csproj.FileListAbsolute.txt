@@ -60,4 +60,21 @@ C:\Users\jtvog\Downloads\trackr-emerson2\trackr-emerson2\trackrForms\obj\Debug\t
 C:\Users\jtvog\Downloads\trackr-emerson2\trackr-emerson2\trackrForms\obj\Debug\trackrForms.csproj.CoreCompileInputs.cache
 C:\Users\jtvog\Downloads\trackr-emerson2\trackr-emerson2\trackrForms\obj\Debug\trackrForms.exe
 C:\Users\jtvog\Downloads\trackr-emerson2\trackr-emerson2\trackrForms\obj\Debug\trackrForms.pdb
+<<<<<<< Updated upstream
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\obj\Debug\trackrForms.CreateMetrics.resources
+=======
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\bin\Debug\trackrDB.accdb
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\bin\Debug\trackrForms.exe.config
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\bin\Debug\trackrForms.exe
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\bin\Debug\trackrForms.pdb
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.csproj.AssemblyReference.cache
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.Dashboard.resources
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.CreateHabit.resources
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.CreateMetrics.resources
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.Properties.Resources.resources
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.csproj.GenerateResource.cache
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.csproj.CoreCompileInputs.cache
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.exe
+C:\Users\Caleb\Documents\GitHub\trackr\trackrForms\obj\Debug\trackrForms.pdb
+>>>>>>> Stashed changes
