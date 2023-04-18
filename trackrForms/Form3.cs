@@ -13,13 +13,15 @@ namespace trackrForms
 {
     public partial class CreateMetrics : Form
     {
+        public static string SetValueForCompletion = "";  
+
         public CreateMetrics()
         {
             InitializeComponent();
             FillMetricsTable();
         }
 
-        private void FillMetricsTable()
+        public void FillMetricsTable()
         {
             //  Need to retrieve habit name, count of a certain habit, and the firstDate of completion.
             //  All of these can be found in the habitHistoryTable
@@ -49,7 +51,7 @@ namespace trackrForms
 
                 //  Using the name of the habit, collect all instances of the habit in habitHistoryTable with dates in ascending order.
                 //  Also collects whether or not the habit was completed on a given day.
-                habitHistoryTableTableAdapter1.FillByHabitNameAscendingDate(habitHistoryTable, habit);
+                habitHistoryTableTableAdapter1.FillByHabit(habitHistoryTable, habit);
 
               //  Collect data about habit name, percent completion, and firstDate
                 
@@ -65,7 +67,7 @@ namespace trackrForms
                 }
                 float percentCompletion = (completions / habitHistoryTable.Rows.Count * 100);
 
-                //      firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
+                //firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
                 DateTime firstDate = (DateTime)habitHistoryTable.Rows[0].ItemArray[2];
 
               //  Add controls for the habit name, percent completion, and firstDate
@@ -96,16 +98,18 @@ namespace trackrForms
                 dateTimeLabel.TextAlign = ContentAlignment.MiddleCenter;
                 dateTimeLabel.Size = new Size(121, 38);
                 tableLayout.Controls.Add(dateTimeLabel, 2, i - emptyRows);
-
+                
                 //Create column for Graphing button
                 Button graphButton = new Button();
                 graphButton.Text = "Graph!";
                 graphButton.Size = new Size(90, 27);
                 tableLayout.Controls.Add(graphButton, 3, i - emptyRows);
 
+                //Clicking event handler
                 graphButton.Click += new System.EventHandler(graphButton_Click);
-
+                
             }
+      
         }
 
         //  Closes this form
@@ -116,19 +120,79 @@ namespace trackrForms
 
         private void graphButton_Click(System.Object sender, EventArgs e)
         {
-            //TODO: Display graph for specific habit
-            //Have to access whether habit is binary or numerical
-            //Display pie chart for binary
-            //Display line chart for numerical
-
+            //Control object            
             Control C = (Control)sender;
 
+            //Gets the row of the graph button
             TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
-
             int row = p.Row;
 
-            //Get the text of the habit label
+            //Get the text of the habit label from corresponding row
             string name = tableLayout.GetControlFromPosition(0, row).Text;
+
+            //Figure out the type of the habit
+            trackrDBDataSet.habitTableDataTable habitTable = new trackrDBDataSet.habitTableDataTable();
+            habitTableTableAdapter1.FillByType(habitTable, name);
+            string type = habitTable.Rows[0].ItemArray[2].ToString();
+            
+            //Pie Chart if binary
+            if (type == "Binary")
+            {
+                //Get percent completion from row 2 of the table layout
+                string percentCompletion = tableLayout.GetControlFromPosition(1, row).Text;
+                double percent = double.Parse(percentCompletion.Substring(0, 5));
+
+                var plt = new ScottPlot.Plot();
+                plt.Title(name);
+
+                double[] values = { percent, 100 - percent };
+                string[] labels = { "Completion Rate", "Incomplete Rate" };
+                
+
+                Color color1 = Color.FromArgb(255, 0, 150, 200);
+                Color color2 = Color.FromArgb(100, 0, 150, 200);
+
+                var pie = plt.AddPie(values);
+                pie.SliceLabels = labels;
+                plt.Legend();
+                pie.Size = .7;
+                pie.DonutSize = .5;
+                pie.DonutLabel = percentCompletion;
+                pie.OutlineSize = 2;
+                pie.SliceFillColors = new Color[] { color1, color2 };
+
+                plt.SaveFig("pie_donutText.png");
+                new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            }
+
+            //Line graph if numerical
+            if (type == "Numerical")
+            {
+                //Get all the date of the specific habit (order by date)
+                trackrDBDataSet.habitHistoryTableDataTable habitHistoryTable = new trackrDBDataSet.habitHistoryTableDataTable();
+                habitHistoryTableTableAdapter1.FillByHabit(habitHistoryTable, name);
+
+                //This creates the arrays for the x and y axis
+                DateTime[] dataX = new DateTime[habitHistoryTable.Rows.Count];
+                double[] dataY = new double[habitHistoryTable.Rows.Count];
+
+                for (int i = 0; i < habitHistoryTable.Rows.Count; i++)
+                {
+                    dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
+                    //if(dataX[i] != DateTime.Today)
+                    dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);
+                }
+
+                double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
+
+                var scaPlt = new ScottPlot.Plot(400, 300);
+                scaPlt.Title(name);
+
+                scaPlt.XAxis.DateTimeFormat(true);
+                scaPlt.AddScatter(xs, dataY);
+                new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
+                  
+            }
 
         }
     }
