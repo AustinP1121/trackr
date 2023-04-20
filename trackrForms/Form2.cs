@@ -71,10 +71,12 @@ namespace trackrForms
             //  Create table both to test and retrieve largest ID value for insertion into the table.
             trackrDBDataSet.habitTableDataTable newTable = new trackrDBDataSet.habitTableDataTable();
             habitTableTableAdapter.Fill(newTable);
-            trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
+
             //var historyAdapter = new habitHistoryTableTableAdapter();
             //habitHistoryTableTableAdapter h = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
             //h.Fill(habitHistory);
+
+            trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter1.Fill(habitHistory);
 
             //  Get the amount of entries in the database before editing.

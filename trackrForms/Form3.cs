@@ -13,8 +13,6 @@ namespace trackrForms
 {
     public partial class CreateMetrics : Form
     {
-        public static string SetValueForCompletion = "";  
-
         public CreateMetrics()
         {
             InitializeComponent();
@@ -109,7 +107,6 @@ namespace trackrForms
                 graphButton.Click += new System.EventHandler(graphButton_Click);
                 
             }
-      
         }
 
         //  Closes this form
@@ -191,9 +188,7 @@ namespace trackrForms
                 scaPlt.XAxis.DateTimeFormat(true);
                 scaPlt.AddScatter(xs, dataY);
                 new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
-                  
             }
-
         }
     }
 }

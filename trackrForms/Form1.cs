@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using trackrForms.trackrDBDataSetTableAdapters;
 
 namespace trackrForms
 {
@@ -31,6 +32,8 @@ namespace trackrForms
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UploadCurrentProgress();
+            tableLayout.Controls.Clear();
+            LoadDataFromTable();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -53,10 +56,15 @@ namespace trackrForms
             trackrDBDataSet.habitHistoryTableDataTable habitDates = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateOrder(habitDates);
 
-            
-
-
-            DateTime lastDate = DateTime.Parse(habitDates.Rows[0].ItemArray[2].ToString());
+            DateTime lastDate;
+            try
+            {
+                lastDate = DateTime.Parse(habitDates.Rows[0].ItemArray[2].ToString());
+            }
+            catch(System.IndexOutOfRangeException ex)
+            {
+                lastDate = today;
+            }
 
             if (lastDate < today)
             {
@@ -89,9 +97,6 @@ namespace trackrForms
                     }
                 }
                 
-                
-                
-
                 for (int currentRow = 0; currentRow < currentHabits.Rows.Count; currentRow++)
                 {
                     string name = currentHabits.Rows[currentRow].ItemArray[1].ToString();
@@ -167,7 +172,9 @@ namespace trackrForms
                     CheckBox currentCurrentGoal = new CheckBox();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
                     currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
-                    currentCurrentGoal.Size = new Size(121, 38);
+                    //currentCurrentGoal.Size = new Size(121, 38);
+                    //currentCurrentGoal.Dock = DockStyle.Left;
+                    currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
                     if (habitHistory.Rows[currentRow].ItemArray[3].ToString() == "1")
                     {
                         currentCurrentGoal.Checked = true;
@@ -192,17 +199,6 @@ namespace trackrForms
 
                 dbUpdated = false;
             }
-
-             
-             
-
-        }
-
-        private void UpdateDashboardButton_Click(object sender, EventArgs e)
-        {
-            UploadCurrentProgress();
-            tableLayout.Controls.Clear();
-            LoadDataFromTable();
         }
 
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
@@ -218,10 +214,18 @@ namespace trackrForms
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
 
+            trackrDBDataSet.habitTableDataTable getLength = new trackrDBDataSet.habitTableDataTable();
 
+            //  Gets all the rows that are being tracked and thus represented by the tableLayout
+            habitTableTableAdapter.FillByCurrentlyTracked(getLength);
+            int tableEntries = getLength.Rows.Count;
 
-            for (int row = 0; row < tableLayout.RowCount; row++)
+            //for (int row = 0; row < tableLayout.RowCount; row++)
+            for (int row = 0; row < tableEntries; row++)
             {
+                //  When adding a control, this is needed as there are now more table entries than drawn in the tableLayout.
+                if (tableEntries > tableLayout.RowCount)
+                    return;
                 var c = tableLayout.GetControlFromPosition(2, row);
                 string name = tableLayout.GetControlFromPosition(0, row).Text;
                 DataRow[] entry = habitHistory.Select("habit = '" + name + "'");
@@ -245,7 +249,6 @@ namespace trackrForms
                 }
                 else if (c is NumericUpDown)
                 {
-                    
                     NumericUpDown num = (NumericUpDown)c;
                     todaysValue = (int)(num.Value);
                     if (positive && todaysValue >= todaysGoal)
@@ -259,7 +262,6 @@ namespace trackrForms
                 }
 
                 habitHistoryTableTableAdapter.UpdateTodaysProgress(todaysValue, goalMet, name, DateTime.Parse(today));
-
             }
         }
 
@@ -278,7 +280,16 @@ namespace trackrForms
             CreateMetrics form = new CreateMetrics();
             form.Show();
         }
-    }
 
-    
+        private void tableLayout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void EditHabitsButton_Click(object sender, EventArgs e)
+        {
+            EditHabits form = new EditHabits();
+            form.Show();
+        }
+    }
 }
