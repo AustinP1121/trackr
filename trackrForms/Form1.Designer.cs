@@ -56,7 +56,7 @@ namespace trackrForms
             // newHabitButton
             // 
             this.newHabitButton.Location = new System.Drawing.Point(210, 482);
-            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2);
             this.newHabitButton.Name = "newHabitButton";
             this.newHabitButton.Size = new System.Drawing.Size(88, 23);
             this.newHabitButton.TabIndex = 0;
@@ -100,7 +100,7 @@ namespace trackrForms
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.Location = new System.Drawing.Point(178, 158);
-            this.tableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayout.Name = "tableLayout";
             this.tableLayout.RowCount = 7;
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
@@ -178,7 +178,7 @@ namespace trackrForms
             // displayMetricsButton
             // 
             this.displayMetricsButton.Location = new System.Drawing.Point(555, 482);
-            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2);
             this.displayMetricsButton.Name = "displayMetricsButton";
             this.displayMetricsButton.Size = new System.Drawing.Size(94, 24);
             this.displayMetricsButton.TabIndex = 6;
@@ -207,9 +207,9 @@ namespace trackrForms
             this.dateLabel.Location = new System.Drawing.Point(265, 59);
             this.dateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(340, 31);
+            this.dateLabel.Size = new System.Drawing.Size(336, 31);
             this.dateLabel.TabIndex = 10;
-            this.dateLabel.Text = "Saturday, March 18 2023";
+            this.dateLabel.Text = "<DateTime Placeholder>";
             this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.dateLabel.Visible = false;
             // 
@@ -252,7 +252,7 @@ namespace trackrForms
             this.Controls.Add(this.newHabitButton);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dashboard";
             this.Text = "trackr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
