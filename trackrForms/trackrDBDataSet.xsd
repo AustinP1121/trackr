@@ -11,7 +11,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="habitHistoryTableTableAdapter" GeneratorDataComponentClassName="habitHistoryTableTableAdapter" Name="habitHistoryTable" UserDataComponentName="habitHistoryTableTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="editConnectionString (Settings)" DbObjectName="habitHistoryTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `habitHistoryTable` WHERE (((? = 1 AND `ID` IS NULL) OR (`ID` = ?)) AND (`habit` = ?) AND (`dateTime` = ?) AND ((? = 1 AND `todaysValue` IS NULL) OR (`todaysValue` = ?)) AND ((? = 1 AND `todaysGoal` IS NULL) OR (`todaysGoal` = ?)) AND ((? = 1 AND `goalMet` IS NULL) OR (`goalMet` = ?)))</CommandText>
@@ -80,7 +80,7 @@
               <Mapping SourceColumn="goalMet" DataSetColumn="goalMet" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByHabit" Modifier="Public" Name="DeleteByHabit" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteByHabit">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByHabit" Modifier="Public" Name="DeleteByHabit" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteByHabit">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM habitHistoryTable
@@ -115,7 +115,7 @@ ORDER BY [dateTime] DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByGraph" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetByGraph" GeneratorSourceName="FillByGraph" GetMethodModifier="Public" GetMethodName="GetByGraph" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetByGraph" UserSourceName="FillByGraph">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByGraph" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetByGraph" GeneratorSourceName="FillByGraph" GetMethodModifier="Public" GetMethodName="GetByGraph" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetByGraph" UserSourceName="FillByGraph">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT habitHistoryTable.habit, habitHistoryTable.[dateTime], habitHistoryTable.todaysValue, habitTable.currentGoal, habitTable.type
@@ -166,7 +166,7 @@ WHERE  ([dateTime] = ?)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateTodaysProgress" Modifier="Public" Name="UpdateTodaysProgress" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateTodaysProgress">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateTodaysProgress" Modifier="Public" Name="UpdateTodaysProgress" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateTodaysProgress">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE habitHistoryTable
@@ -185,7 +185,7 @@ WHERE  (habit = ?) AND ([dateTime] = ?)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="habitTableTableAdapter" GeneratorDataComponentClassName="habitTableTableAdapter" Name="habitTable" UserDataComponentName="habitTableTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="habitTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `habitTable` WHERE (((? = 1 AND `ID` IS NULL) OR (`ID` = ?)) AND (`habit` = ?) AND ((? = 1 AND `type` IS NULL) OR (`type` = ?)) AND ((? = 1 AND `currentGoal` IS NULL) OR (`currentGoal` = ?)) AND ((? = 1 AND `isPositive` IS NULL) OR (`isPositive` = ?)) AND ((? = 1 AND `currentlyTracked` IS NULL) OR (`currentlyTracked` = ?)) AND ((? = 1 AND `Streak` IS NULL) OR (`Streak` = ?)))</CommandText>
@@ -266,7 +266,7 @@ VALUES        (?, ?, ?, ?, ?, ?, ?)</CommandText>
               <Mapping SourceColumn="Streak" DataSetColumn="Streak" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByHabit" Modifier="Public" Name="DeleteByHabit" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteByHabit">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByHabit" Modifier="Public" Name="DeleteByHabit" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteByHabit">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM habitTable
@@ -297,12 +297,12 @@ WHERE  (currentlyTracked = true)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="habitTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByType" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetByType" GeneratorSourceName="FillByType" GetMethodModifier="Public" GetMethodName="GetByType" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetByType" UserSourceName="FillByType">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByType" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetByType" GeneratorSourceName="FillByType" GetMethodModifier="Public" GetMethodName="GetByType" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetByType" UserSourceName="FillByType">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT habit, type
-FROM     habitTable
-WHERE  (habit = ?)</CommandText>
+                    <CommandText>SELECT        habit, type
+FROM            habitTable
+WHERE        (habit = ?)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="habit" DataSourceName="habitTable" DataTypeServer="DbType.StringFixedLength(255)" DbType="String" Direction="Input" ParameterName="habit" Precision="0" ProviderType="WChar" Scale="0" Size="255" SourceColumn="habit" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -334,7 +334,7 @@ WHERE        (habit = ?)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStreak" Modifier="Public" Name="UpdateStreak" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateStreak">
+              <DbSource ConnectionRef="trackrDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStreak" Modifier="Public" Name="UpdateStreak" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateStreak">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE habitTable
@@ -357,46 +357,46 @@ WHERE  (habit = ?)</CommandText>
   <xs:element name="trackrDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="trackrDBDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="trackrDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="habitHistoryTable" msprop:Generator_UserTableName="habitHistoryTable" msprop:Generator_RowEvArgName="habitHistoryTableRowChangeEvent" msprop:Generator_TableVarName="tablehabitHistoryTable" msprop:Generator_TablePropName="habitHistoryTable" msprop:Generator_RowDeletingName="habitHistoryTableRowDeleting" msprop:Generator_RowChangingName="habitHistoryTableRowChanging" msprop:Generator_RowDeletedName="habitHistoryTableRowDeleted" msprop:Generator_RowEvHandlerName="habitHistoryTableRowChangeEventHandler" msprop:Generator_TableClassName="habitHistoryTableDataTable" msprop:Generator_RowChangedName="habitHistoryTableRowChanged" msprop:Generator_RowClassName="habitHistoryTableRow">
+        <xs:element name="habitHistoryTable" msprop:Generator_RowClassName="habitHistoryTableRow" msprop:Generator_RowEvHandlerName="habitHistoryTableRowChangeEventHandler" msprop:Generator_RowDeletedName="habitHistoryTableRowDeleted" msprop:Generator_RowDeletingName="habitHistoryTableRowDeleting" msprop:Generator_RowEvArgName="habitHistoryTableRowChangeEvent" msprop:Generator_TablePropName="habitHistoryTable" msprop:Generator_RowChangedName="habitHistoryTableRowChanged" msprop:Generator_UserTableName="habitHistoryTable" msprop:Generator_RowChangingName="habitHistoryTableRowChanging" msprop:Generator_TableClassName="habitHistoryTableDataTable" msprop:Generator_TableVarName="tablehabitHistoryTable">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
-              <xs:element name="habit" msprop:Generator_UserColumnName="habit" msprop:Generator_ColumnPropNameInTable="habitColumn" msprop:Generator_ColumnPropNameInRow="habit" msprop:Generator_ColumnVarNameInTable="columnhabit">
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
+              <xs:element name="habit" msprop:Generator_ColumnPropNameInTable="habitColumn" msprop:Generator_ColumnPropNameInRow="habit" msprop:Generator_UserColumnName="habit" msprop:Generator_ColumnVarNameInTable="columnhabit">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="dateTime" msprop:Generator_UserColumnName="dateTime" msprop:Generator_ColumnPropNameInTable="dateTimeColumn" msprop:Generator_ColumnPropNameInRow="dateTime" msprop:Generator_ColumnVarNameInTable="columndateTime" type="xs:dateTime" />
-              <xs:element name="todaysValue" msprop:Generator_UserColumnName="todaysValue" msprop:Generator_ColumnPropNameInTable="todaysValueColumn" msprop:Generator_ColumnPropNameInRow="todaysValue" msprop:Generator_ColumnVarNameInTable="columntodaysValue" type="xs:int" minOccurs="0" />
-              <xs:element name="todaysGoal" msprop:Generator_UserColumnName="todaysGoal" msprop:Generator_ColumnPropNameInTable="todaysGoalColumn" msprop:Generator_ColumnPropNameInRow="todaysGoal" msprop:Generator_ColumnVarNameInTable="columntodaysGoal" type="xs:int" minOccurs="0" />
-              <xs:element name="goalMet" msprop:Generator_UserColumnName="goalMet" msprop:Generator_ColumnPropNameInTable="goalMetColumn" msprop:Generator_ColumnPropNameInRow="goalMet" msprop:Generator_ColumnVarNameInTable="columngoalMet" type="xs:boolean" minOccurs="0" />
+              <xs:element name="dateTime" msprop:Generator_ColumnPropNameInTable="dateTimeColumn" msprop:Generator_ColumnPropNameInRow="dateTime" msprop:Generator_UserColumnName="dateTime" msprop:Generator_ColumnVarNameInTable="columndateTime" type="xs:dateTime" />
+              <xs:element name="todaysValue" msprop:Generator_ColumnPropNameInTable="todaysValueColumn" msprop:Generator_ColumnPropNameInRow="todaysValue" msprop:Generator_UserColumnName="todaysValue" msprop:Generator_ColumnVarNameInTable="columntodaysValue" type="xs:int" minOccurs="0" />
+              <xs:element name="todaysGoal" msprop:Generator_ColumnPropNameInTable="todaysGoalColumn" msprop:Generator_ColumnPropNameInRow="todaysGoal" msprop:Generator_UserColumnName="todaysGoal" msprop:Generator_ColumnVarNameInTable="columntodaysGoal" type="xs:int" minOccurs="0" />
+              <xs:element name="goalMet" msprop:Generator_ColumnPropNameInTable="goalMetColumn" msprop:Generator_ColumnPropNameInRow="goalMet" msprop:Generator_UserColumnName="goalMet" msprop:Generator_ColumnVarNameInTable="columngoalMet" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="habitTable" msprop:Generator_UserTableName="habitTable" msprop:Generator_RowEvArgName="habitTableRowChangeEvent" msprop:Generator_TableVarName="tablehabitTable" msprop:Generator_TablePropName="habitTable" msprop:Generator_RowDeletingName="habitTableRowDeleting" msprop:Generator_RowChangingName="habitTableRowChanging" msprop:Generator_RowDeletedName="habitTableRowDeleted" msprop:Generator_RowEvHandlerName="habitTableRowChangeEventHandler" msprop:Generator_TableClassName="habitTableDataTable" msprop:Generator_RowChangedName="habitTableRowChanged" msprop:Generator_RowClassName="habitTableRow">
+        <xs:element name="habitTable" msprop:Generator_RowClassName="habitTableRow" msprop:Generator_RowEvHandlerName="habitTableRowChangeEventHandler" msprop:Generator_RowDeletedName="habitTableRowDeleted" msprop:Generator_RowDeletingName="habitTableRowDeleting" msprop:Generator_RowEvArgName="habitTableRowChangeEvent" msprop:Generator_TablePropName="habitTable" msprop:Generator_RowChangedName="habitTableRowChanged" msprop:Generator_UserTableName="habitTable" msprop:Generator_RowChangingName="habitTableRowChanging" msprop:Generator_TableClassName="habitTableDataTable" msprop:Generator_TableVarName="tablehabitTable">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
-              <xs:element name="habit" msprop:Generator_UserColumnName="habit" msprop:Generator_ColumnPropNameInTable="habitColumn" msprop:Generator_ColumnPropNameInRow="habit" msprop:Generator_ColumnVarNameInTable="columnhabit">
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
+              <xs:element name="habit" msprop:Generator_ColumnPropNameInTable="habitColumn" msprop:Generator_ColumnPropNameInRow="habit" msprop:Generator_UserColumnName="habit" msprop:Generator_ColumnVarNameInTable="columnhabit">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="type" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnPropNameInTable="typeColumn" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_ColumnVarNameInTable="columntype" minOccurs="0">
+              <xs:element name="type" msprop:Generator_ColumnPropNameInTable="typeColumn" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnVarNameInTable="columntype" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="currentGoal" msprop:Generator_UserColumnName="currentGoal" msprop:Generator_ColumnPropNameInTable="currentGoalColumn" msprop:Generator_ColumnPropNameInRow="currentGoal" msprop:Generator_ColumnVarNameInTable="columncurrentGoal" type="xs:int" minOccurs="0" />
-              <xs:element name="isPositive" msprop:Generator_UserColumnName="isPositive" msprop:Generator_ColumnPropNameInTable="isPositiveColumn" msprop:Generator_ColumnPropNameInRow="isPositive" msprop:Generator_ColumnVarNameInTable="columnisPositive" type="xs:boolean" minOccurs="0" />
-              <xs:element name="currentlyTracked" msprop:Generator_UserColumnName="currentlyTracked" msprop:Generator_ColumnPropNameInTable="currentlyTrackedColumn" msprop:Generator_ColumnPropNameInRow="currentlyTracked" msprop:Generator_ColumnVarNameInTable="columncurrentlyTracked" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Streak" msprop:Generator_UserColumnName="Streak" msprop:Generator_ColumnPropNameInTable="StreakColumn" msprop:Generator_ColumnPropNameInRow="Streak" msprop:Generator_ColumnVarNameInTable="columnStreak" type="xs:int" minOccurs="0" />
+              <xs:element name="currentGoal" msprop:Generator_ColumnPropNameInTable="currentGoalColumn" msprop:Generator_ColumnPropNameInRow="currentGoal" msprop:Generator_UserColumnName="currentGoal" msprop:Generator_ColumnVarNameInTable="columncurrentGoal" type="xs:int" minOccurs="0" />
+              <xs:element name="isPositive" msprop:Generator_ColumnPropNameInTable="isPositiveColumn" msprop:Generator_ColumnPropNameInRow="isPositive" msprop:Generator_UserColumnName="isPositive" msprop:Generator_ColumnVarNameInTable="columnisPositive" type="xs:boolean" minOccurs="0" />
+              <xs:element name="currentlyTracked" msprop:Generator_ColumnPropNameInTable="currentlyTrackedColumn" msprop:Generator_ColumnPropNameInRow="currentlyTracked" msprop:Generator_UserColumnName="currentlyTracked" msprop:Generator_ColumnVarNameInTable="columncurrentlyTracked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Streak" msprop:Generator_ColumnPropNameInTable="StreakColumn" msprop:Generator_ColumnPropNameInRow="Streak" msprop:Generator_UserColumnName="Streak" msprop:Generator_ColumnVarNameInTable="columnStreak" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -414,7 +414,7 @@ WHERE  (habit = ?)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="habitTablehabitHistoryTable" msdata:parent="habitTable" msdata:child="habitHistoryTable" msdata:parentkey="habit" msdata:childkey="habit" msprop:Generator_UserChildTable="habitHistoryTable" msprop:Generator_ChildPropName="GethabitHistoryTableRows" msprop:Generator_UserRelationName="habitTablehabitHistoryTable" msprop:Generator_RelationVarName="relationhabitTablehabitHistoryTable" msprop:Generator_UserParentTable="habitTable" msprop:Generator_ParentPropName="habitTableRow" />
+      <msdata:Relationship name="habitTablehabitHistoryTable" msdata:parent="habitTable" msdata:child="habitHistoryTable" msdata:parentkey="habit" msdata:childkey="habit" msprop:Generator_UserParentTable="habitTable" msprop:Generator_UserChildTable="habitHistoryTable" msprop:Generator_RelationVarName="relationhabitTablehabitHistoryTable" msprop:Generator_ChildPropName="GethabitHistoryTableRows" msprop:Generator_ParentPropName="habitTableRow" msprop:Generator_UserRelationName="habitTablehabitHistoryTable" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

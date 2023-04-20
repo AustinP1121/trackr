@@ -25,6 +25,7 @@ namespace trackrForms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            UploadCurrentProgress();
             var myForm = new CreateHabit();
             myForm.Show();
         }
@@ -137,6 +138,7 @@ namespace trackrForms
                 //Habit Column
                 Label currentHabit = new Label();
                 currentHabit.Text = habitHistory.Rows[currentRow].ItemArray[1].ToString();
+                // [0].ToString().ToUpper() + habitHistory.Rows[currentRow].ItemArray[1].ToString().Substring(1)
                 currentHabit.Name = "currentHabit" + currentRow + "Label";
                 currentHabit.TextAlign = ContentAlignment.MiddleCenter;
                 currentHabit.Size = new Size(121, 38);
@@ -288,6 +290,7 @@ namespace trackrForms
 
         private void EditHabitsButton_Click(object sender, EventArgs e)
         {
+            UploadCurrentProgress();
             EditHabits form = new EditHabits();
             form.Show();
         }

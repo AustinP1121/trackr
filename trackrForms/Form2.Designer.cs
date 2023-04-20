@@ -59,7 +59,7 @@ namespace trackrForms
             // habitNameTextBox
             // 
             this.habitNameTextBox.Location = new System.Drawing.Point(145, 76);
-            this.habitNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.habitNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.habitNameTextBox.Name = "habitNameTextBox";
             this.habitNameTextBox.Size = new System.Drawing.Size(102, 20);
             this.habitNameTextBox.TabIndex = 0;
@@ -67,7 +67,7 @@ namespace trackrForms
             // createHabitButton
             // 
             this.createHabitButton.Location = new System.Drawing.Point(232, 289);
-            this.createHabitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createHabitButton.Margin = new System.Windows.Forms.Padding(2);
             this.createHabitButton.Name = "createHabitButton";
             this.createHabitButton.Size = new System.Drawing.Size(91, 19);
             this.createHabitButton.TabIndex = 1;
@@ -78,7 +78,7 @@ namespace trackrForms
             // thresholdNumericUpDown
             // 
             this.thresholdNumericUpDown.Location = new System.Drawing.Point(307, 133);
-            this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.thresholdNumericUpDown.Name = "thresholdNumericUpDown";
             this.thresholdNumericUpDown.Size = new System.Drawing.Size(90, 20);
             this.thresholdNumericUpDown.TabIndex = 2;
@@ -91,7 +91,7 @@ namespace trackrForms
             "Binary",
             "Numerical"});
             this.typeNameComboBox.Location = new System.Drawing.Point(306, 74);
-            this.typeNameComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.typeNameComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.typeNameComboBox.Name = "typeNameComboBox";
             this.typeNameComboBox.Size = new System.Drawing.Size(92, 21);
             this.typeNameComboBox.TabIndex = 3;
@@ -105,7 +105,7 @@ namespace trackrForms
             "Positive",
             "Negative"});
             this.pos_negComboBox.Location = new System.Drawing.Point(145, 133);
-            this.pos_negComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pos_negComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.pos_negComboBox.Name = "pos_negComboBox";
             this.pos_negComboBox.Size = new System.Drawing.Size(92, 21);
             this.pos_negComboBox.TabIndex = 4;
@@ -182,7 +182,7 @@ namespace trackrForms
             this.mondayCheckBox.Checked = true;
             this.mondayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mondayCheckBox.Location = new System.Drawing.Point(12, 35);
-            this.mondayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mondayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.mondayCheckBox.Name = "mondayCheckBox";
             this.mondayCheckBox.Size = new System.Drawing.Size(32, 31);
             this.mondayCheckBox.TabIndex = 11;
@@ -196,7 +196,7 @@ namespace trackrForms
             this.tusdayCheckBox.Checked = true;
             this.tusdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tusdayCheckBox.Location = new System.Drawing.Point(46, 35);
-            this.tusdayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tusdayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.tusdayCheckBox.Name = "tusdayCheckBox";
             this.tusdayCheckBox.Size = new System.Drawing.Size(30, 31);
             this.tusdayCheckBox.TabIndex = 12;
@@ -210,7 +210,7 @@ namespace trackrForms
             this.wednesdayCheckBox.Checked = true;
             this.wednesdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.wednesdayCheckBox.Location = new System.Drawing.Point(78, 35);
-            this.wednesdayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wednesdayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.wednesdayCheckBox.Name = "wednesdayCheckBox";
             this.wednesdayCheckBox.Size = new System.Drawing.Size(34, 31);
             this.wednesdayCheckBox.TabIndex = 13;
@@ -224,7 +224,7 @@ namespace trackrForms
             this.thursdayCheckBox.Checked = true;
             this.thursdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.thursdayCheckBox.Location = new System.Drawing.Point(113, 35);
-            this.thursdayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.thursdayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.thursdayCheckBox.Name = "thursdayCheckBox";
             this.thursdayCheckBox.Size = new System.Drawing.Size(30, 31);
             this.thursdayCheckBox.TabIndex = 14;
@@ -238,7 +238,7 @@ namespace trackrForms
             this.fridayCheckBox.Checked = true;
             this.fridayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.fridayCheckBox.Location = new System.Drawing.Point(146, 35);
-            this.fridayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fridayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.fridayCheckBox.Name = "fridayCheckBox";
             this.fridayCheckBox.Size = new System.Drawing.Size(22, 31);
             this.fridayCheckBox.TabIndex = 15;
@@ -252,7 +252,7 @@ namespace trackrForms
             this.saturdayCheckBox.Checked = true;
             this.saturdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saturdayCheckBox.Location = new System.Drawing.Point(177, 35);
-            this.saturdayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saturdayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.saturdayCheckBox.Name = "saturdayCheckBox";
             this.saturdayCheckBox.Size = new System.Drawing.Size(27, 31);
             this.saturdayCheckBox.TabIndex = 16;
@@ -266,7 +266,7 @@ namespace trackrForms
             this.sundayCheckBox.Checked = true;
             this.sundayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sundayCheckBox.Location = new System.Drawing.Point(212, 35);
-            this.sundayCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sundayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.sundayCheckBox.Name = "sundayCheckBox";
             this.sundayCheckBox.Size = new System.Drawing.Size(30, 31);
             this.sundayCheckBox.TabIndex = 17;
@@ -284,12 +284,13 @@ namespace trackrForms
             this.scheduleGroupBox.Controls.Add(this.fridayCheckBox);
             this.scheduleGroupBox.Controls.Add(this.thursdayCheckBox);
             this.scheduleGroupBox.Location = new System.Drawing.Point(145, 170);
-            this.scheduleGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.scheduleGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.scheduleGroupBox.Name = "scheduleGroupBox";
-            this.scheduleGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.scheduleGroupBox.Padding = new System.Windows.Forms.Padding(2);
             this.scheduleGroupBox.Size = new System.Drawing.Size(260, 78);
             this.scheduleGroupBox.TabIndex = 18;
             this.scheduleGroupBox.TabStop = false;
+            this.scheduleGroupBox.Visible = false;
             // 
             // habitTableTableAdapter
             // 
@@ -308,7 +309,7 @@ namespace trackrForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(583, 367);
             this.Controls.Add(this.scheduleGroupBox);
             this.Controls.Add(this.more_lessLabel);
             this.Controls.Add(this.thresholdLabel);
@@ -320,7 +321,7 @@ namespace trackrForms
             this.Controls.Add(this.thresholdNumericUpDown);
             this.Controls.Add(this.createHabitButton);
             this.Controls.Add(this.habitNameTextBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateHabit";
             this.Text = "New Habit";
             this.Load += new System.EventHandler(this.CreateHabit_Load);

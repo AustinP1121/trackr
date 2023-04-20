@@ -137,7 +137,7 @@ namespace trackrForms
             {
                 //Get percent completion from row 2 of the table layout
                 string percentCompletion = tableLayout.GetControlFromPosition(1, row).Text;
-                double percent = double.Parse(percentCompletion.Substring(0, 5));
+                double percent = double.Parse(percentCompletion.Substring(0, percentCompletion.Length - 1));
 
                 var plt = new ScottPlot.Plot();
                 plt.Title(name);
