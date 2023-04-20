@@ -29,267 +29,299 @@ namespace trackrForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.sunCheckBox = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.habitNameTextBox = new System.Windows.Forms.TextBox();
+            this.createHabitButton = new System.Windows.Forms.Button();
+            this.thresholdNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.typeNameComboBox = new System.Windows.Forms.ComboBox();
+            this.pos_negComboBox = new System.Windows.Forms.ComboBox();
+            this.habitNameLabel = new System.Windows.Forms.Label();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.pos_negLabel = new System.Windows.Forms.Label();
+            this.thresholdLabel = new System.Windows.Forms.Label();
+            this.more_lessLabel = new System.Windows.Forms.Label();
+            this.scheduleCheckBox = new System.Windows.Forms.Label();
+            this.mondayCheckBox = new System.Windows.Forms.CheckBox();
+            this.tusdayCheckBox = new System.Windows.Forms.CheckBox();
+            this.wednesdayCheckBox = new System.Windows.Forms.CheckBox();
+            this.thursdayCheckBox = new System.Windows.Forms.CheckBox();
+            this.fridayCheckBox = new System.Windows.Forms.CheckBox();
+            this.saturdayCheckBox = new System.Windows.Forms.CheckBox();
+            this.sundayCheckBox = new System.Windows.Forms.CheckBox();
+            this.scheduleGroupBox = new System.Windows.Forms.GroupBox();
+            this.habitTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
+            this.trackrDBDataSet1 = new trackrForms.trackrDBDataSet();
+            this.habitHistoryTableTableAdapter1 = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).BeginInit();
+            this.scheduleGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // habitNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 22);
-            this.textBox1.TabIndex = 0;
+            this.habitNameTextBox.Location = new System.Drawing.Point(193, 94);
+            this.habitNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.habitNameTextBox.Name = "habitNameTextBox";
+            this.habitNameTextBox.Size = new System.Drawing.Size(135, 22);
+            this.habitNameTextBox.TabIndex = 0;
             // 
-            // button1
+            // createHabitButton
             // 
-            this.button1.Location = new System.Drawing.Point(327, 376);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Create Habit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.createHabitButton.Location = new System.Drawing.Point(327, 377);
+            this.createHabitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createHabitButton.Name = "createHabitButton";
+            this.createHabitButton.Size = new System.Drawing.Size(121, 23);
+            this.createHabitButton.TabIndex = 1;
+            this.createHabitButton.Text = "Create Habit";
+            this.createHabitButton.UseVisualStyleBackColor = true;
+            this.createHabitButton.Click += new System.EventHandler(this.createHabitButton_Click);
             // 
-            // numericUpDown1
+            // thresholdNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(409, 164);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Visible = false;
+            this.thresholdNumericUpDown.Location = new System.Drawing.Point(409, 164);
+            this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.thresholdNumericUpDown.Name = "thresholdNumericUpDown";
+            this.thresholdNumericUpDown.Size = new System.Drawing.Size(120, 22);
+            this.thresholdNumericUpDown.TabIndex = 2;
+            this.thresholdNumericUpDown.Visible = false;
             // 
-            // comboBox1
+            // typeNameComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.typeNameComboBox.FormattingEnabled = true;
+            this.typeNameComboBox.Items.AddRange(new object[] {
             "Binary",
             "Numerical"});
-            this.comboBox1.Location = new System.Drawing.Point(408, 91);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            this.typeNameComboBox.Location = new System.Drawing.Point(408, 91);
+            this.typeNameComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.typeNameComboBox.Name = "typeNameComboBox";
+            this.typeNameComboBox.Size = new System.Drawing.Size(121, 24);
+            this.typeNameComboBox.TabIndex = 3;
+            this.typeNameComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.typeNameComboBox.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
-            // comboBox2
+            // pos_negComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.pos_negComboBox.FormattingEnabled = true;
+            this.pos_negComboBox.Items.AddRange(new object[] {
             "Positive",
             "Negative"});
-            this.comboBox2.Location = new System.Drawing.Point(193, 164);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 4;
-            this.comboBox2.Visible = false;
-            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
+            this.pos_negComboBox.Location = new System.Drawing.Point(193, 164);
+            this.pos_negComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pos_negComboBox.Name = "pos_negComboBox";
+            this.pos_negComboBox.Size = new System.Drawing.Size(121, 24);
+            this.pos_negComboBox.TabIndex = 4;
+            this.pos_negComboBox.Visible = false;
+            this.pos_negComboBox.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             // 
-            // label1
+            // habitNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(219, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Habit Name";
+            this.habitNameLabel.AutoSize = true;
+            this.habitNameLabel.Location = new System.Drawing.Point(219, 62);
+            this.habitNameLabel.Name = "habitNameLabel";
+            this.habitNameLabel.Size = new System.Drawing.Size(82, 17);
+            this.habitNameLabel.TabIndex = 5;
+            this.habitNameLabel.Text = "Habit Name";
             // 
-            // label2
+            // typeLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(445, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Type";
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(445, 62);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(40, 17);
+            this.typeLabel.TabIndex = 6;
+            this.typeLabel.Text = "Type";
             // 
-            // label3
+            // pos_negLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Positive/Negative";
-            this.label3.Visible = false;
+            this.pos_negLabel.AutoSize = true;
+            this.pos_negLabel.Location = new System.Drawing.Point(197, 137);
+            this.pos_negLabel.Name = "pos_negLabel";
+            this.pos_negLabel.Size = new System.Drawing.Size(117, 17);
+            this.pos_negLabel.TabIndex = 7;
+            this.pos_negLabel.Text = "Positive/Negative";
+            this.pos_negLabel.Visible = false;
             // 
-            // label4
+            // thresholdLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(426, 137);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Threshold";
-            this.label4.Visible = false;
+            this.thresholdLabel.AutoSize = true;
+            this.thresholdLabel.Location = new System.Drawing.Point(427, 137);
+            this.thresholdLabel.Name = "thresholdLabel";
+            this.thresholdLabel.Size = new System.Drawing.Size(72, 17);
+            this.thresholdLabel.TabIndex = 8;
+            this.thresholdLabel.Text = "Threshold";
+            this.thresholdLabel.Visible = false;
             // 
-            // label5
+            // more_lessLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(535, 166);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "or more";
-            this.label5.Visible = false;
+            this.more_lessLabel.AutoSize = true;
+            this.more_lessLabel.Location = new System.Drawing.Point(535, 166);
+            this.more_lessLabel.Name = "more_lessLabel";
+            this.more_lessLabel.Size = new System.Drawing.Size(57, 17);
+            this.more_lessLabel.TabIndex = 9;
+            this.more_lessLabel.Text = "or more";
+            this.more_lessLabel.Visible = false;
             // 
-            // label6
+            // scheduleCheckBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Schedule";
+            this.scheduleCheckBox.AutoSize = true;
+            this.scheduleCheckBox.Location = new System.Drawing.Point(133, 18);
+            this.scheduleCheckBox.Name = "scheduleCheckBox";
+            this.scheduleCheckBox.Size = new System.Drawing.Size(67, 17);
+            this.scheduleCheckBox.TabIndex = 10;
+            this.scheduleCheckBox.Text = "Schedule";
             // 
-            // checkBox1
+            // mondayCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(16, 43);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(39, 38);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Mon";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.mondayCheckBox.AutoSize = true;
+            this.mondayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.mondayCheckBox.Checked = true;
+            this.mondayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mondayCheckBox.Location = new System.Drawing.Point(16, 43);
+            this.mondayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mondayCheckBox.Name = "mondayCheckBox";
+            this.mondayCheckBox.Size = new System.Drawing.Size(39, 38);
+            this.mondayCheckBox.TabIndex = 11;
+            this.mondayCheckBox.Text = "Mon";
+            this.mondayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // tusdayCheckBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(61, 43);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(37, 38);
-            this.checkBox2.TabIndex = 12;
-            this.checkBox2.Text = "Tue";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.tusdayCheckBox.AutoSize = true;
+            this.tusdayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tusdayCheckBox.Checked = true;
+            this.tusdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tusdayCheckBox.Location = new System.Drawing.Point(61, 43);
+            this.tusdayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tusdayCheckBox.Name = "tusdayCheckBox";
+            this.tusdayCheckBox.Size = new System.Drawing.Size(37, 38);
+            this.tusdayCheckBox.TabIndex = 12;
+            this.tusdayCheckBox.Text = "Tue";
+            this.tusdayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // wednesdayCheckBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(104, 43);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(41, 38);
-            this.checkBox3.TabIndex = 13;
-            this.checkBox3.Text = "Wed";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.wednesdayCheckBox.AutoSize = true;
+            this.wednesdayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.wednesdayCheckBox.Checked = true;
+            this.wednesdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.wednesdayCheckBox.Location = new System.Drawing.Point(104, 43);
+            this.wednesdayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.wednesdayCheckBox.Name = "wednesdayCheckBox";
+            this.wednesdayCheckBox.Size = new System.Drawing.Size(41, 38);
+            this.wednesdayCheckBox.TabIndex = 13;
+            this.wednesdayCheckBox.Text = "Wed";
+            this.wednesdayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // thursdayCheckBox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(151, 43);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(37, 38);
-            this.checkBox4.TabIndex = 14;
-            this.checkBox4.Text = "Thu";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.thursdayCheckBox.AutoSize = true;
+            this.thursdayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.thursdayCheckBox.Checked = true;
+            this.thursdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.thursdayCheckBox.Location = new System.Drawing.Point(151, 43);
+            this.thursdayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.thursdayCheckBox.Name = "thursdayCheckBox";
+            this.thursdayCheckBox.Size = new System.Drawing.Size(37, 38);
+            this.thursdayCheckBox.TabIndex = 14;
+            this.thursdayCheckBox.Text = "Thu";
+            this.thursdayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // fridayCheckBox
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(194, 43);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(28, 38);
-            this.checkBox5.TabIndex = 15;
-            this.checkBox5.Text = "Fri";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.fridayCheckBox.AutoSize = true;
+            this.fridayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.fridayCheckBox.Checked = true;
+            this.fridayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fridayCheckBox.Location = new System.Drawing.Point(195, 43);
+            this.fridayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fridayCheckBox.Name = "fridayCheckBox";
+            this.fridayCheckBox.Size = new System.Drawing.Size(28, 38);
+            this.fridayCheckBox.TabIndex = 15;
+            this.fridayCheckBox.Text = "Fri";
+            this.fridayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // saturdayCheckBox
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Location = new System.Drawing.Point(236, 43);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(33, 38);
-            this.checkBox6.TabIndex = 16;
-            this.checkBox6.Text = "Sat";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.saturdayCheckBox.AutoSize = true;
+            this.saturdayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.saturdayCheckBox.Checked = true;
+            this.saturdayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.saturdayCheckBox.Location = new System.Drawing.Point(236, 43);
+            this.saturdayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saturdayCheckBox.Name = "saturdayCheckBox";
+            this.saturdayCheckBox.Size = new System.Drawing.Size(33, 38);
+            this.saturdayCheckBox.TabIndex = 16;
+            this.saturdayCheckBox.Text = "Sat";
+            this.saturdayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // sunCheckBox
+            // sundayCheckBox
             // 
-            this.sunCheckBox.AutoSize = true;
-            this.sunCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.sunCheckBox.Checked = true;
-            this.sunCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.sunCheckBox.Location = new System.Drawing.Point(283, 43);
-            this.sunCheckBox.Name = "sunCheckBox";
-            this.sunCheckBox.Size = new System.Drawing.Size(37, 38);
-            this.sunCheckBox.TabIndex = 17;
-            this.sunCheckBox.Text = "Sun";
-            this.sunCheckBox.UseVisualStyleBackColor = true;
-            this.sunCheckBox.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.sundayCheckBox.AutoSize = true;
+            this.sundayCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.sundayCheckBox.Checked = true;
+            this.sundayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.sundayCheckBox.Location = new System.Drawing.Point(283, 43);
+            this.sundayCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sundayCheckBox.Name = "sundayCheckBox";
+            this.sundayCheckBox.Size = new System.Drawing.Size(37, 38);
+            this.sundayCheckBox.TabIndex = 17;
+            this.sundayCheckBox.Text = "Sun";
+            this.sundayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // scheduleGroupBox
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.sunCheckBox);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox6);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox5);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Location = new System.Drawing.Point(193, 209);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 96);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
+            this.scheduleGroupBox.Controls.Add(this.mondayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.scheduleCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.sundayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.tusdayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.saturdayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.wednesdayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.fridayCheckBox);
+            this.scheduleGroupBox.Controls.Add(this.thursdayCheckBox);
+            this.scheduleGroupBox.Location = new System.Drawing.Point(193, 209);
+            this.scheduleGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.scheduleGroupBox.Name = "scheduleGroupBox";
+            this.scheduleGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.scheduleGroupBox.Size = new System.Drawing.Size(347, 96);
+            this.scheduleGroupBox.TabIndex = 18;
+            this.scheduleGroupBox.TabStop = false;
+            // 
+            // habitTableTableAdapter
+            // 
+            this.habitTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // trackrDBDataSet1
+            // 
+            this.trackrDBDataSet1.DataSetName = "trackrDBDataSet";
+            this.trackrDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // habitHistoryTableTableAdapter1
+            // 
+            this.habitHistoryTableTableAdapter1.ClearBeforeFill = true;
             // 
             // CreateHabit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.scheduleGroupBox);
+            this.Controls.Add(this.more_lessLabel);
+            this.Controls.Add(this.thresholdLabel);
+            this.Controls.Add(this.pos_negLabel);
+            this.Controls.Add(this.typeLabel);
+            this.Controls.Add(this.habitNameLabel);
+            this.Controls.Add(this.pos_negComboBox);
+            this.Controls.Add(this.typeNameComboBox);
+            this.Controls.Add(this.thresholdNumericUpDown);
+            this.Controls.Add(this.createHabitButton);
+            this.Controls.Add(this.habitNameTextBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CreateHabit";
             this.Text = "New Habit";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.CreateHabit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).EndInit();
+            this.scheduleGroupBox.ResumeLayout(false);
+            this.scheduleGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,24 +329,27 @@ namespace trackrForms
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox sunCheckBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox habitNameTextBox;
+        private System.Windows.Forms.Button createHabitButton;
+        private System.Windows.Forms.NumericUpDown thresholdNumericUpDown;
+        private System.Windows.Forms.ComboBox typeNameComboBox;
+        private System.Windows.Forms.ComboBox pos_negComboBox;
+        private System.Windows.Forms.Label habitNameLabel;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.Label pos_negLabel;
+        private System.Windows.Forms.Label thresholdLabel;
+        private System.Windows.Forms.Label more_lessLabel;
+        private System.Windows.Forms.Label scheduleCheckBox;
+        private System.Windows.Forms.CheckBox mondayCheckBox;
+        private System.Windows.Forms.CheckBox tusdayCheckBox;
+        private System.Windows.Forms.CheckBox wednesdayCheckBox;
+        private System.Windows.Forms.CheckBox thursdayCheckBox;
+        private System.Windows.Forms.CheckBox fridayCheckBox;
+        private System.Windows.Forms.CheckBox saturdayCheckBox;
+        private System.Windows.Forms.CheckBox sundayCheckBox;
+        private System.Windows.Forms.GroupBox scheduleGroupBox;
+        private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdapter;
+        private trackrDBDataSet trackrDBDataSet1;
+        private trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter habitHistoryTableTableAdapter1;
     }
 }

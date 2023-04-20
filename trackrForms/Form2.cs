@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using trackrForms.trackrDBDataSetTableAdapters;
 
 namespace trackrForms
 {
@@ -24,54 +28,115 @@ namespace trackrForms
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Numerical")
+            if (typeNameComboBox.SelectedItem.ToString() == "Numerical")
             {
-                label3.Visible = true;
-                comboBox2.Visible = true;
-                label4.Visible = true;
-                numericUpDown1.Visible = true;
-                label5.Visible = false;
+                pos_negLabel.Visible = true;
+                pos_negComboBox.Visible = true;
+                thresholdLabel.Visible = true;
+                thresholdNumericUpDown.Visible = true;
+                more_lessLabel.Visible = false;
             }
             else
             {
-                label3.Visible = false;
-                comboBox2.Visible = false;
-                label4.Visible = false;
-                numericUpDown1.Visible = false;
-                label5.Visible = false;
+                pos_negLabel.Visible = false;
+                pos_negComboBox.Visible = false;
+                thresholdLabel.Visible = false;
+                thresholdNumericUpDown.Visible = false;
+                more_lessLabel.Visible = false;
             }
-        }
-
-        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedItem.ToString() == "Positive")
+            if (pos_negComboBox.SelectedItem.ToString() == "Positive")
             {
-                label5.Text = "or more";
-                label5.Visible = true;
+                more_lessLabel.Text = "or more";
+                more_lessLabel.Visible = true;
             }
-            else if (comboBox2.SelectedItem.ToString() == "Negative")
+            else if (pos_negComboBox.SelectedItem.ToString() == "Negative")
             {
-                label5.Text = "or less";
-                label5.Visible = true;
+                more_lessLabel.Text = "or less";
+                more_lessLabel.Visible = true;
             }
             else
             {
-                label5.Visible = false;
+                more_lessLabel.Visible = false;
             }
             
         }
 
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        private void createHabitButton_Click(object sender, EventArgs e)
+        {
+            
+            //  Create table both to test and retrieve largest ID value for insertion into the table.
+            trackrDBDataSet.habitTableDataTable newTable = new trackrDBDataSet.habitTableDataTable();
+            habitTableTableAdapter.Fill(newTable);
+            trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
+            //var historyAdapter = new habitHistoryTableTableAdapter();
+            //habitHistoryTableTableAdapter h = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
+            //h.Fill(habitHistory);
+            habitHistoryTableTableAdapter1.Fill(habitHistory);
+
+            //  Get the amount of entries in the database before editing.
+            int initialRowCount = newTable.Rows.Count;
+
+            //  Input validation for habits
+            if (habitNameTextBox.Text == String.Empty || !(typeNameComboBox.Text == "Binary" || typeNameComboBox.Text == "Numerical") || (typeNameComboBox.Text == "Numerical" && !(pos_negComboBox.Text == "Positive" || pos_negComboBox.Text == "Negative")))
+            {
+                MessageBox.Show("Some or all of your input values are not correct.\nPlease ensure your habit has a title," +
+                    " is either Binary or Numerical, and if the habit is numerical, is either positive or negative.");
+                return;
+            }
+
+            try
+            {
+                int id = newTable.Rows.Count + 1;
+                string name = habitNameTextBox.Text;
+                string type = typeNameComboBox.Text;
+                int goal = typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString());
+                bool positive = pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary";
+                DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
+                bool goalMet = false;
+                if (positive && 0 >= goal)
+                {
+                    goalMet = true;
+                }
+                else if (!positive && 0 <= goal)
+                {
+                    goalMet = true;
+                }
+
+
+                habitTableTableAdapter.Insert(id, name, type, goal, positive, true, 0);
+                //  Insert value based on the user input
+                /*
+                habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 
+                    typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString()),
+                    pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary", true, 0);
+                */
+                //string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
+                
+                habitHistoryTableTableAdapter1.Insert(name, today, 0, goal, goalMet);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //  Fill table again to show more proof that the table was locally updated, as according to the program (Shows RowsCount, ID of newest row)
+            habitTableTableAdapter.Fill(newTable);
+            if (newTable.Rows.Count > initialRowCount)
+                MessageBox.Show("Habit successfully added to your habit dashboard!");
+            else
+                MessageBox.Show("Habit was not added to the dashboard. Did you create a habit with the same name as an existing habit?");
+
+            Dashboard.dbUpdated = true;
+
+            //  Close form
+            Close();
+        }
+
+        private void CreateHabit_Load(object sender, EventArgs e)
         {
 
         }
