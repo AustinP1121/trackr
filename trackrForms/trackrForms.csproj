@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="GraphForm.Designer.cs">
       <DependentUpon>GraphForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="Form4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +135,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphForm.resx">
       <DependentUpon>GraphForm.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
