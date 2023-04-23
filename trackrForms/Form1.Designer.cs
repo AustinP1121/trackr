@@ -31,7 +31,7 @@ namespace trackrForms
         {
             this.components = new System.ComponentModel.Container();
             this.newHabitButton = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -47,15 +47,17 @@ namespace trackrForms
             this.trackrDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.habitHistoryTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
             this.habitTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
-            this.menuStrip1.SuspendLayout();
+            this.dailyDashboardContainer = new System.Windows.Forms.GroupBox();
+            this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.habitHistoryTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSetBindingSource)).BeginInit();
+            this.dailyDashboardContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // newHabitButton
             // 
-            this.newHabitButton.Location = new System.Drawing.Point(210, 482);
+            this.newHabitButton.Location = new System.Drawing.Point(76, 437);
             this.newHabitButton.Margin = new System.Windows.Forms.Padding(2);
             this.newHabitButton.Name = "newHabitButton";
             this.newHabitButton.Size = new System.Drawing.Size(88, 23);
@@ -64,18 +66,17 @@ namespace trackrForms
             this.newHabitButton.UseVisualStyleBackColor = true;
             this.newHabitButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.syncToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip.TabIndex = 3;
             // 
             // fileToolStripMenuItem
             // 
@@ -92,14 +93,16 @@ namespace trackrForms
             // 
             // tableLayout
             // 
-            this.tableLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.AutoScroll = true;
             this.tableLayout.ColumnCount = 4;
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayout.Location = new System.Drawing.Point(178, 158);
+            this.tableLayout.Location = new System.Drawing.Point(47, 114);
             this.tableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayout.Name = "tableLayout";
             this.tableLayout.RowCount = 7;
@@ -122,7 +125,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.todaysProgressLabel.AutoSize = true;
             this.todaysProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.todaysProgressLabel.Location = new System.Drawing.Point(440, 131);
+            this.todaysProgressLabel.Location = new System.Drawing.Point(303, 88);
             this.todaysProgressLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.todaysProgressLabel.Name = "todaysProgressLabel";
             this.todaysProgressLabel.Size = new System.Drawing.Size(104, 13);
@@ -137,7 +140,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentStreakLabel.AutoSize = true;
             this.currentStreakLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentStreakLabel.Location = new System.Drawing.Point(575, 131);
+            this.currentStreakLabel.Location = new System.Drawing.Point(438, 88);
             this.currentStreakLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentStreakLabel.Name = "currentStreakLabel";
             this.currentStreakLabel.Size = new System.Drawing.Size(89, 13);
@@ -152,7 +155,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.goalColumnLabel.AutoSize = true;
             this.goalColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goalColumnLabel.Location = new System.Drawing.Point(348, 131);
+            this.goalColumnLabel.Location = new System.Drawing.Point(211, 88);
             this.goalColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.goalColumnLabel.Name = "goalColumnLabel";
             this.goalColumnLabel.Size = new System.Drawing.Size(33, 13);
@@ -167,7 +170,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.habitColumnLabel.AutoSize = true;
             this.habitColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.habitColumnLabel.Location = new System.Drawing.Point(220, 131);
+            this.habitColumnLabel.Location = new System.Drawing.Point(83, 88);
             this.habitColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.habitColumnLabel.Name = "habitColumnLabel";
             this.habitColumnLabel.Size = new System.Drawing.Size(37, 13);
@@ -177,7 +180,7 @@ namespace trackrForms
             // 
             // displayMetricsButton
             // 
-            this.displayMetricsButton.Location = new System.Drawing.Point(555, 482);
+            this.displayMetricsButton.Location = new System.Drawing.Point(421, 437);
             this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2);
             this.displayMetricsButton.Name = "displayMetricsButton";
             this.displayMetricsButton.Size = new System.Drawing.Size(94, 24);
@@ -188,7 +191,7 @@ namespace trackrForms
             // 
             // editHabitsButton
             // 
-            this.editHabitsButton.Location = new System.Drawing.Point(378, 482);
+            this.editHabitsButton.Location = new System.Drawing.Point(244, 437);
             this.editHabitsButton.Margin = new System.Windows.Forms.Padding(2);
             this.editHabitsButton.Name = "editHabitsButton";
             this.editHabitsButton.Size = new System.Drawing.Size(91, 24);
@@ -204,7 +207,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLabel.Location = new System.Drawing.Point(265, 59);
+            this.dateLabel.Location = new System.Drawing.Point(128, 16);
             this.dateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(336, 31);
@@ -236,32 +239,44 @@ namespace trackrForms
             // 
             this.habitTableTableAdapter.ClearBeforeFill = true;
             // 
+            // dailyDashboardContainer
+            // 
+            this.dailyDashboardContainer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dailyDashboardContainer.Controls.Add(this.dateLabel);
+            this.dailyDashboardContainer.Controls.Add(this.newHabitButton);
+            this.dailyDashboardContainer.Controls.Add(this.tableLayout);
+            this.dailyDashboardContainer.Controls.Add(this.currentStreakLabel);
+            this.dailyDashboardContainer.Controls.Add(this.habitColumnLabel);
+            this.dailyDashboardContainer.Controls.Add(this.todaysProgressLabel);
+            this.dailyDashboardContainer.Controls.Add(this.editHabitsButton);
+            this.dailyDashboardContainer.Controls.Add(this.goalColumnLabel);
+            this.dailyDashboardContainer.Controls.Add(this.displayMetricsButton);
+            this.dailyDashboardContainer.Location = new System.Drawing.Point(126, 27);
+            this.dailyDashboardContainer.Name = "dailyDashboardContainer";
+            this.dailyDashboardContainer.Size = new System.Drawing.Size(590, 500);
+            this.dailyDashboardContainer.TabIndex = 11;
+            this.dailyDashboardContainer.TabStop = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
-            this.Controls.Add(this.dateLabel);
-            this.Controls.Add(this.currentStreakLabel);
-            this.Controls.Add(this.todaysProgressLabel);
-            this.Controls.Add(this.editHabitsButton);
-            this.Controls.Add(this.displayMetricsButton);
-            this.Controls.Add(this.goalColumnLabel);
-            this.Controls.Add(this.tableLayout);
-            this.Controls.Add(this.habitColumnLabel);
-            this.Controls.Add(this.newHabitButton);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.dailyDashboardContainer);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dashboard";
             this.Text = "trackr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.habitHistoryTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSetBindingSource)).EndInit();
+            this.dailyDashboardContainer.ResumeLayout(false);
+            this.dailyDashboardContainer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,7 +285,7 @@ namespace trackrForms
         #endregion
 
         private System.Windows.Forms.Button newHabitButton;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayout;
@@ -286,6 +301,7 @@ namespace trackrForms
         private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdapter;
         private System.Windows.Forms.Button editHabitsButton;
         private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.GroupBox dailyDashboardContainer;
     }
 }
 

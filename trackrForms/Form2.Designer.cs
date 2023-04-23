@@ -51,14 +51,16 @@ namespace trackrForms
             this.habitTableTableAdapter = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
             this.trackrDBDataSet1 = new trackrForms.trackrDBDataSet();
             this.habitHistoryTableTableAdapter1 = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
+            this.createHabitContainer = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).BeginInit();
             this.scheduleGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet1)).BeginInit();
+            this.createHabitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // habitNameTextBox
             // 
-            this.habitNameTextBox.Location = new System.Drawing.Point(145, 76);
+            this.habitNameTextBox.Location = new System.Drawing.Point(52, 63);
             this.habitNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.habitNameTextBox.Name = "habitNameTextBox";
             this.habitNameTextBox.Size = new System.Drawing.Size(102, 20);
@@ -66,7 +68,7 @@ namespace trackrForms
             // 
             // createHabitButton
             // 
-            this.createHabitButton.Location = new System.Drawing.Point(232, 289);
+            this.createHabitButton.Location = new System.Drawing.Point(139, 276);
             this.createHabitButton.Margin = new System.Windows.Forms.Padding(2);
             this.createHabitButton.Name = "createHabitButton";
             this.createHabitButton.Size = new System.Drawing.Size(91, 19);
@@ -77,7 +79,7 @@ namespace trackrForms
             // 
             // thresholdNumericUpDown
             // 
-            this.thresholdNumericUpDown.Location = new System.Drawing.Point(307, 133);
+            this.thresholdNumericUpDown.Location = new System.Drawing.Point(214, 120);
             this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.thresholdNumericUpDown.Name = "thresholdNumericUpDown";
             this.thresholdNumericUpDown.Size = new System.Drawing.Size(90, 20);
@@ -90,7 +92,7 @@ namespace trackrForms
             this.typeNameComboBox.Items.AddRange(new object[] {
             "Binary",
             "Numerical"});
-            this.typeNameComboBox.Location = new System.Drawing.Point(306, 74);
+            this.typeNameComboBox.Location = new System.Drawing.Point(213, 61);
             this.typeNameComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.typeNameComboBox.Name = "typeNameComboBox";
             this.typeNameComboBox.Size = new System.Drawing.Size(92, 21);
@@ -104,7 +106,7 @@ namespace trackrForms
             this.pos_negComboBox.Items.AddRange(new object[] {
             "Positive",
             "Negative"});
-            this.pos_negComboBox.Location = new System.Drawing.Point(145, 133);
+            this.pos_negComboBox.Location = new System.Drawing.Point(52, 120);
             this.pos_negComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.pos_negComboBox.Name = "pos_negComboBox";
             this.pos_negComboBox.Size = new System.Drawing.Size(92, 21);
@@ -115,7 +117,7 @@ namespace trackrForms
             // habitNameLabel
             // 
             this.habitNameLabel.AutoSize = true;
-            this.habitNameLabel.Location = new System.Drawing.Point(164, 50);
+            this.habitNameLabel.Location = new System.Drawing.Point(71, 37);
             this.habitNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.habitNameLabel.Name = "habitNameLabel";
             this.habitNameLabel.Size = new System.Drawing.Size(63, 13);
@@ -125,7 +127,7 @@ namespace trackrForms
             // typeLabel
             // 
             this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(334, 50);
+            this.typeLabel.Location = new System.Drawing.Point(241, 37);
             this.typeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.typeLabel.Name = "typeLabel";
             this.typeLabel.Size = new System.Drawing.Size(31, 13);
@@ -135,7 +137,7 @@ namespace trackrForms
             // pos_negLabel
             // 
             this.pos_negLabel.AutoSize = true;
-            this.pos_negLabel.Location = new System.Drawing.Point(148, 111);
+            this.pos_negLabel.Location = new System.Drawing.Point(55, 98);
             this.pos_negLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pos_negLabel.Name = "pos_negLabel";
             this.pos_negLabel.Size = new System.Drawing.Size(92, 13);
@@ -146,7 +148,7 @@ namespace trackrForms
             // thresholdLabel
             // 
             this.thresholdLabel.AutoSize = true;
-            this.thresholdLabel.Location = new System.Drawing.Point(320, 111);
+            this.thresholdLabel.Location = new System.Drawing.Point(227, 98);
             this.thresholdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.thresholdLabel.Name = "thresholdLabel";
             this.thresholdLabel.Size = new System.Drawing.Size(54, 13);
@@ -157,7 +159,7 @@ namespace trackrForms
             // more_lessLabel
             // 
             this.more_lessLabel.AutoSize = true;
-            this.more_lessLabel.Location = new System.Drawing.Point(401, 135);
+            this.more_lessLabel.Location = new System.Drawing.Point(308, 122);
             this.more_lessLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.more_lessLabel.Name = "more_lessLabel";
             this.more_lessLabel.Size = new System.Drawing.Size(42, 13);
@@ -283,7 +285,7 @@ namespace trackrForms
             this.scheduleGroupBox.Controls.Add(this.wednesdayCheckBox);
             this.scheduleGroupBox.Controls.Add(this.fridayCheckBox);
             this.scheduleGroupBox.Controls.Add(this.thursdayCheckBox);
-            this.scheduleGroupBox.Location = new System.Drawing.Point(145, 170);
+            this.scheduleGroupBox.Location = new System.Drawing.Point(52, 157);
             this.scheduleGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.scheduleGroupBox.Name = "scheduleGroupBox";
             this.scheduleGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -305,22 +307,32 @@ namespace trackrForms
             // 
             this.habitHistoryTableTableAdapter1.ClearBeforeFill = true;
             // 
+            // createHabitContainer
+            // 
+            this.createHabitContainer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.createHabitContainer.Controls.Add(this.habitNameLabel);
+            this.createHabitContainer.Controls.Add(this.scheduleGroupBox);
+            this.createHabitContainer.Controls.Add(this.habitNameTextBox);
+            this.createHabitContainer.Controls.Add(this.more_lessLabel);
+            this.createHabitContainer.Controls.Add(this.createHabitButton);
+            this.createHabitContainer.Controls.Add(this.thresholdLabel);
+            this.createHabitContainer.Controls.Add(this.thresholdNumericUpDown);
+            this.createHabitContainer.Controls.Add(this.pos_negLabel);
+            this.createHabitContainer.Controls.Add(this.typeNameComboBox);
+            this.createHabitContainer.Controls.Add(this.typeLabel);
+            this.createHabitContainer.Controls.Add(this.pos_negComboBox);
+            this.createHabitContainer.Location = new System.Drawing.Point(109, 12);
+            this.createHabitContainer.Name = "createHabitContainer";
+            this.createHabitContainer.Size = new System.Drawing.Size(361, 326);
+            this.createHabitContainer.TabIndex = 19;
+            this.createHabitContainer.TabStop = false;
+            // 
             // CreateHabit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 367);
-            this.Controls.Add(this.scheduleGroupBox);
-            this.Controls.Add(this.more_lessLabel);
-            this.Controls.Add(this.thresholdLabel);
-            this.Controls.Add(this.pos_negLabel);
-            this.Controls.Add(this.typeLabel);
-            this.Controls.Add(this.habitNameLabel);
-            this.Controls.Add(this.pos_negComboBox);
-            this.Controls.Add(this.typeNameComboBox);
-            this.Controls.Add(this.thresholdNumericUpDown);
-            this.Controls.Add(this.createHabitButton);
-            this.Controls.Add(this.habitNameTextBox);
+            this.Controls.Add(this.createHabitContainer);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateHabit";
             this.Text = "New Habit";
@@ -329,8 +341,9 @@ namespace trackrForms
             this.scheduleGroupBox.ResumeLayout(false);
             this.scheduleGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackrDBDataSet1)).EndInit();
+            this.createHabitContainer.ResumeLayout(false);
+            this.createHabitContainer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -358,5 +371,6 @@ namespace trackrForms
         private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdapter;
         private trackrDBDataSet trackrDBDataSet1;
         private trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter habitHistoryTableTableAdapter1;
+        private System.Windows.Forms.GroupBox createHabitContainer;
     }
 }
