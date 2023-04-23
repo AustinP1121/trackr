@@ -140,7 +140,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentStreakLabel.AutoSize = true;
             this.currentStreakLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentStreakLabel.Location = new System.Drawing.Point(438, 88);
+            this.currentStreakLabel.Location = new System.Drawing.Point(440, 88);
             this.currentStreakLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentStreakLabel.Name = "currentStreakLabel";
             this.currentStreakLabel.Size = new System.Drawing.Size(89, 13);
@@ -155,7 +155,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.goalColumnLabel.AutoSize = true;
             this.goalColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goalColumnLabel.Location = new System.Drawing.Point(211, 88);
+            this.goalColumnLabel.Location = new System.Drawing.Point(220, 88);
             this.goalColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.goalColumnLabel.Name = "goalColumnLabel";
             this.goalColumnLabel.Size = new System.Drawing.Size(33, 13);
@@ -170,7 +170,7 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.habitColumnLabel.AutoSize = true;
             this.habitColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.habitColumnLabel.Location = new System.Drawing.Point(83, 88);
+            this.habitColumnLabel.Location = new System.Drawing.Point(91, 88);
             this.habitColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.habitColumnLabel.Name = "habitColumnLabel";
             this.habitColumnLabel.Size = new System.Drawing.Size(37, 13);

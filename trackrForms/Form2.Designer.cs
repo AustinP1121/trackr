@@ -79,6 +79,7 @@ namespace trackrForms
             // 
             // thresholdNumericUpDown
             // 
+            this.thresholdNumericUpDown.DecimalPlaces = 2;
             this.thresholdNumericUpDown.Location = new System.Drawing.Point(214, 120);
             this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.thresholdNumericUpDown.Name = "thresholdNumericUpDown";

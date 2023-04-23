@@ -173,11 +173,15 @@ namespace trackrForms
                 DateTime[] dataX = new DateTime[habitHistoryTable.Rows.Count];
                 double[] dataY = new double[habitHistoryTable.Rows.Count];
 
+                double[] dataGoal = new double[habitHistoryTable.Rows.Count];
+
                 for (int i = 0; i < habitHistoryTable.Rows.Count; i++)
                 {
                     dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
                     //if(dataX[i] != DateTime.Today)
-                    dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);
+                    dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[6]);
+
+                    dataGoal[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[7]);
                 }
 
                 double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
@@ -186,7 +190,11 @@ namespace trackrForms
                 scaPlt.Title(name);
 
                 scaPlt.XAxis.DateTimeFormat(true);
-                scaPlt.AddScatter(xs, dataY);
+                scaPlt.AddScatter(xs, dataY, label: "Daily Value");
+                scaPlt.AddScatter(xs, dataGoal, label: "Daily Goal");
+                scaPlt.Legend();
+                scaPlt.XAxis.Label("Dates Tracked");
+                scaPlt.YAxis.Label("Number Value of Habit");
                 new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();
             }
         }

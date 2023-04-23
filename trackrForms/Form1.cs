@@ -155,21 +155,22 @@ namespace trackrForms
                //Progress column
 
                 //case for numeric goal
-                if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Numerical")
+                if (habitHistory.Rows[currentRow].ItemArray[8].ToString() == "Numerical")
                 {
                     NumericUpDown currentCurrentGoal = new NumericUpDown();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
                     currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
                     currentCurrentGoal.Size = new Size(121, 38);
                     currentCurrentGoal.Margin = new Padding(3, 10, 3, 3);
-                    currentCurrentGoal.Value = Int32.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
+                    currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[6].ToString());
+                    currentCurrentGoal.DecimalPlaces = 2;
 
                     //Adds event to be associated with conditional formating
                     currentCurrentGoal.ValueChanged += new System.EventHandler(numericChanged);
                 }
 
                 //case for binary goal
-                else if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Binary")
+                else if (habitHistory.Rows[currentRow].ItemArray[8].ToString() == "Binary")
                 {
                     CheckBox currentCurrentGoal = new CheckBox();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
@@ -177,7 +178,7 @@ namespace trackrForms
                     //currentCurrentGoal.Size = new Size(121, 38);
                     //currentCurrentGoal.Dock = DockStyle.Left;
                     currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
-                    if (habitHistory.Rows[currentRow].ItemArray[3].ToString() == "1")
+                    if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "1")
                     {
                         currentCurrentGoal.Checked = true;
                     }
@@ -193,7 +194,7 @@ namespace trackrForms
 
                 //  Streak Column
                 Label currentStreak = new Label();
-                currentStreak.Text = habitHistory.Rows[currentRow].ItemArray[10].ToString();
+                currentStreak.Text = habitHistory.Rows[currentRow].ItemArray[12].ToString();
                 currentStreak.Name = "currentStreak" + currentRow + "Label";
                 currentStreak.TextAlign = ContentAlignment.MiddleCenter;
                 currentStreak.Size = new Size(121, 38);
@@ -231,10 +232,10 @@ namespace trackrForms
                 var c = tableLayout.GetControlFromPosition(2, row);
                 string name = tableLayout.GetControlFromPosition(0, row).Text;
                 DataRow[] entry = habitHistory.Select("habit = '" + name + "'");
-                int todaysValue = 0;
-                int todaysGoal = Int32.Parse(tableLayout.GetControlFromPosition(1,row).Text);
+                decimal todaysValue = 0;
+                decimal todaysGoal = Decimal.Parse(tableLayout.GetControlFromPosition(1,row).Text);
                 bool goalMet = false;
-                bool positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+                bool positive = Boolean.Parse(entry[0].ItemArray[10].ToString());
 
                 if (c is CheckBox)
                 {
@@ -252,7 +253,7 @@ namespace trackrForms
                 else if (c is NumericUpDown)
                 {
                     NumericUpDown num = (NumericUpDown)c;
-                    todaysValue = (int)(num.Value);
+                    todaysValue = (decimal)(num.Value);
                     if (positive && todaysValue >= todaysGoal)
                     {
                         goalMet = true;

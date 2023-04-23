@@ -95,7 +95,7 @@ namespace trackrForms
                 int id = newTable.Rows.Count + 1;
                 string name = habitNameTextBox.Text;
                 string type = typeNameComboBox.Text;
-                int goal = typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString());
+                decimal goal = typeNameComboBox.Text == "Binary" ? 1 : Decimal.Parse(thresholdNumericUpDown.Value.ToString());
                 bool positive = pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary";
                 DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
                 bool goalMet = false;
@@ -109,7 +109,7 @@ namespace trackrForms
                 }
 
 
-                habitTableTableAdapter.Insert(id, name, type, goal, positive, true, 0);
+                habitTableTableAdapter.Insert(name, type, (double)goal, positive, true, 0);
                 //  Insert value based on the user input
                 /*
                 habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 
@@ -118,7 +118,7 @@ namespace trackrForms
                 */
                 //string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
                 
-                habitHistoryTableTableAdapter1.Insert(name, today, 0, goal, goalMet);
+                habitHistoryTableTableAdapter1.Insert(name, today, 0, (double)goal, goalMet);
             }
             catch (Exception ex)
             {
