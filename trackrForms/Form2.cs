@@ -109,7 +109,7 @@ namespace trackrForms
                 }
 
 
-                habitTableTableAdapter.Insert(name, type, (double)goal, positive, true, 0);
+                habitTableTableAdapter.Insert(name, type, goal, positive, true, 0);
                 //  Insert value based on the user input
                 /*
                 habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 
@@ -118,7 +118,7 @@ namespace trackrForms
                 */
                 //string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
                 
-                habitHistoryTableTableAdapter1.Insert(name, today, 0, (double)goal, goalMet);
+                habitHistoryTableTableAdapter1.Insert(name, today, 0, goal, goalMet);
             }
             catch (Exception ex)
             {

@@ -26,6 +26,7 @@ namespace trackrForms
     public partial class EditHabits : Form
     {
         trackrDBDataSet.habitTableDataTable listBoxInput;
+        bool binaryHabit;
 
         public EditHabits()
         {
@@ -58,9 +59,10 @@ namespace trackrForms
             trackrDBDataSet.habitTableRow currentRow = listBoxInput.FindByhabit(habitDataGridView.SelectedRows[0].Cells[0].Value.ToString());
 
             //  Fill the editing controls with information from the habitTable (note, these controls are still not visible).
-            habitTypeComboBox.Text = currentRow[2].ToString();
+            newHabitNameTextBox.Text = currentRow[1].ToString();
+            binaryHabit = currentRow[2].ToString() == "Binary";
             posNegComboBox.Text = bool.Parse(currentRow[4].ToString()) ? "Positive" : "Negative";
-            thresholdTextBox.Text = currentRow[3].ToString();
+            thresholdNumericUpDown.Value = Convert.ToDecimal(currentRow[3]);
             currentlyTrackingCheckBox.Checked = bool.Parse(currentRow[5].ToString());
         }
 
@@ -83,79 +85,64 @@ namespace trackrForms
         private void editHabitButton_Click(object sender, EventArgs e)
         {
             //  Enable all controls necessary to edit a binary habit
-            habitTypeLabel.Visible = true;
-            habitTypeComboBox.Visible = true;
+            newHabitNameLabel.Visible = true;
+            newHabitNameTextBox.Visible = true;
             currentlyTrackingLabel.Visible = true;
             currentlyTrackingCheckBox.Visible = true;
             acceptChangesButton.Visible = true;
 
             //  Then, call the following event handler to test if the habit is numerical and needs more controls to edit.
-            habitTypeComboBox_SelectedIndexChanged(sender, e);
-        }
-
-        private void habitTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //  If the habit is numerical, or has been changed to numerical, and the user is in the process of editing a habit, enable the necessary controls.
-            if (habitTypeComboBox.SelectedIndex == 1 && habitTypeComboBox.Visible)
+            if (!binaryHabit)
             {
                 posNegLabel.Visible = true;
                 posNegComboBox.Visible = true;
                 thresholdLabel.Visible = true;
-                thresholdTextBox.Visible = true;
+                thresholdNumericUpDown.Visible = true;
             }
-            //  Otherwise, disable them. This is useful if a user changes the habitType to binary during editing.
-            else
+            /*else
             {
                 posNegLabel.Visible = false;
                 posNegComboBox.Visible = false;
                 thresholdLabel.Visible = false;
-                thresholdTextBox.Visible = false;
-            }
+                thresholdNumericUpDown.Visible = false;
+            }*/
         }
 
         private void acceptChangesButton_Click(object sender, EventArgs e)
         {
             //  Input Validation
 
-            //  Test the habitType comboBox
-            if(habitTypeComboBox.Text != "Binary" && habitTypeComboBox.Text != "Numerical")
-            {
-                MessageBox.Show("Please choose either Binary or Numerical for your habit type.");
-                return;
-            }
-
             //  For Numerical habits...
-            if(habitTypeComboBox.Text == "Numeical")
+            if(thresholdNumericUpDown.Visible)
             {
-                //  Test Positive/Negative comboBox
-                if(posNegComboBox.Text != "Positive" && posNegComboBox.Text != "Negative")
-                {
-                    MessageBox.Show("Please choose either Positive or Negative for the positivity of your habit.");
-                    return;
-                }
-
                 //  Test threshold value
                 int test;
-                if(!Int32.TryParse(thresholdTextBox.Text, out test))
+                if(!Int32.TryParse(thresholdNumericUpDown.Text, out test) && (test > 100 || test < 0))
                 {
-                    MessageBox.Show("Please input an integer value for your threshold.");
+                    MessageBox.Show("Please input an integer value between 0 and 100 for your threshold.");
                     return;
                 }
             }
             //  Input validation has succeeded
 
+            string originalHabit = habitDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+
             //  For binary habits, input the values that the user has edited, with "positive" set to true and "currentGoal" set to 1.
-            if (habitTypeComboBox.Text == "Binary")
+            if (binaryHabit)
             {
-                habitTableTableAdap.UpdateHabitEntry(habitTypeComboBox.Text, 1, true, currentlyTrackingCheckBox.Checked, 
-                    habitDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                habitTableTableAdap.UpdateHabitEntry(1, true, currentlyTrackingCheckBox.Checked, originalHabit);
             }
             //  For numerical habits, input the values that the user has edited.
             else
             {
-                habitTableTableAdap.UpdateHabitEntry(habitTypeComboBox.Text, Int32.Parse(thresholdTextBox.Text),
-                    posNegComboBox.Text == "Positive", currentlyTrackingCheckBox.Checked, habitDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                habitTableTableAdap.UpdateHabitEntry(Convert.ToDecimal(thresholdNumericUpDown.Text),
+                    posNegComboBox.Text == "Positive", currentlyTrackingCheckBox.Checked, originalHabit);
             }
+
+            //  Update today's goal in habitHistoryTable as well, so that a history of the habit goals is kept. Also this is referenced by the daily dashboard.
+            habitHistoryTableTableAdap.UpdateEditHabit(newHabitNameTextBox.Text, Decimal.Parse(thresholdNumericUpDown.Text), originalHabit, DateTime.Today);
+
+            //  Also, if the name of the habit was changed, update the name in all records in the habitHistoryTable
 
             //  Reset all the editing controls, and update the dataGridView to reflect changes..
             ResetControls();
@@ -167,12 +154,12 @@ namespace trackrForms
             //  Turn off ALL of the editing controls.
             currentlyTrackingLabel.Visible = false;
             currentlyTrackingCheckBox.Visible = false;
-            habitTypeLabel.Visible = false;
-            habitTypeComboBox.Visible = false;
+            newHabitNameLabel.Visible = false;
+            newHabitNameTextBox.Visible = false;
             posNegLabel.Visible = false;
             posNegComboBox.Visible = false;
             thresholdLabel.Visible = false;
-            thresholdTextBox.Visible = false;
+            thresholdNumericUpDown.Visible = false;
             acceptChangesButton.Visible = false;
         }
 

@@ -101,7 +101,7 @@ namespace trackrForms
                 for (int currentRow = 0; currentRow < currentHabits.Rows.Count; currentRow++)
                 {
                     string name = currentHabits.Rows[currentRow].ItemArray[1].ToString();
-                    int goal = Int32.Parse(currentHabits.Rows[currentRow].ItemArray[3].ToString());
+                    decimal goal = Decimal.Parse(currentHabits.Rows[currentRow].ItemArray[3].ToString());
                     bool positive = Boolean.Parse(currentHabits.Rows[currentRow].ItemArray[4].ToString());
                     bool goalMet = false;
                     if (positive && 0 >= goal)
@@ -146,7 +146,7 @@ namespace trackrForms
 
                 //  Goal Column
                 Label currentGoal = new Label();
-                currentGoal.Text = habitHistory.Rows[currentRow].ItemArray[7].ToString();
+                currentGoal.Text = habitHistory.Rows[currentRow].ItemArray[4].ToString();
                 currentGoal.Name = "currentGoal" + currentRow + "Label";
                 currentGoal.TextAlign = ContentAlignment.MiddleCenter;
                 currentGoal.Size = new Size(121, 38);
@@ -155,14 +155,14 @@ namespace trackrForms
                //Progress column
 
                 //case for numeric goal
-                if (habitHistory.Rows[currentRow].ItemArray[8].ToString() == "Numerical")
+                if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Numerical")
                 {
                     NumericUpDown currentCurrentGoal = new NumericUpDown();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
                     currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
                     currentCurrentGoal.Size = new Size(121, 38);
                     currentCurrentGoal.Margin = new Padding(3, 10, 3, 3);
-                    currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[6].ToString());
+                    currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
                     currentCurrentGoal.DecimalPlaces = 2;
 
                     //Adds event to be associated with conditional formating
@@ -170,7 +170,7 @@ namespace trackrForms
                 }
 
                 //case for binary goal
-                else if (habitHistory.Rows[currentRow].ItemArray[8].ToString() == "Binary")
+                else if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Binary")
                 {
                     CheckBox currentCurrentGoal = new CheckBox();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
@@ -178,7 +178,7 @@ namespace trackrForms
                     //currentCurrentGoal.Size = new Size(121, 38);
                     //currentCurrentGoal.Dock = DockStyle.Left;
                     currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
-                    if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "1")
+                    if (habitHistory.Rows[currentRow].ItemArray[3].ToString() == "1")
                     {
                         currentCurrentGoal.Checked = true;
                     }
@@ -194,7 +194,7 @@ namespace trackrForms
 
                 //  Streak Column
                 Label currentStreak = new Label();
-                currentStreak.Text = habitHistory.Rows[currentRow].ItemArray[12].ToString();
+                currentStreak.Text = habitHistory.Rows[currentRow].ItemArray[10].ToString();
                 currentStreak.Name = "currentStreak" + currentRow + "Label";
                 currentStreak.TextAlign = ContentAlignment.MiddleCenter;
                 currentStreak.Size = new Size(121, 38);
@@ -215,7 +215,7 @@ namespace trackrForms
         {
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
-            habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
+            habitHistoryTableTableAdapter.FillByDateJoiningIncludingNotTracked(habitHistory, DateTime.Parse(today));
 
             trackrDBDataSet.habitTableDataTable getLength = new trackrDBDataSet.habitTableDataTable();
 
@@ -229,13 +229,17 @@ namespace trackrForms
                 //  When adding a control, this is needed as there are now more table entries than drawn in the tableLayout.
                 if (tableEntries > tableLayout.RowCount)
                     return;
-                var c = tableLayout.GetControlFromPosition(2, row);
                 string name = tableLayout.GetControlFromPosition(0, row).Text;
+                var c = tableLayout.GetControlFromPosition(2, row);
                 DataRow[] entry = habitHistory.Select("habit = '" + name + "'");
+
+                //  If entry = {} (no data row) then its name has been changed and this new name should be looked for
+
                 decimal todaysValue = 0;
-                decimal todaysGoal = Decimal.Parse(tableLayout.GetControlFromPosition(1,row).Text);
+                decimal todaysGoal = Decimal.Parse(tableLayout.GetControlFromPosition(1, row).Text);
                 bool goalMet = false;
-                bool positive = Boolean.Parse(entry[0].ItemArray[10].ToString());
+                bool positive;
+                positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
 
                 if (c is CheckBox)
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScottPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -179,9 +180,9 @@ namespace trackrForms
                 {
                     dataX[i] = (DateTime)habitHistoryTable.Rows[i].ItemArray[2];
                     //if(dataX[i] != DateTime.Today)
-                    dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[6]);
+                    dataY[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[3]);
 
-                    dataGoal[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[7]);
+                    dataGoal[i] = Convert.ToDouble(habitHistoryTable.Rows[i].ItemArray[4]);
                 }
 
                 double[] xs = dataX.Select(x => x.ToOADate()).ToArray();
@@ -192,7 +193,7 @@ namespace trackrForms
                 scaPlt.XAxis.DateTimeFormat(true);
                 scaPlt.AddScatter(xs, dataY, label: "Daily Value");
                 scaPlt.AddScatter(xs, dataGoal, label: "Daily Goal");
-                scaPlt.Legend();
+                scaPlt.Legend(true, Alignment.UpperLeft);
                 scaPlt.XAxis.Label("Dates Tracked");
                 scaPlt.YAxis.Label("Number Value of Habit");
                 new ScottPlot.FormsPlotViewer(scaPlt).ShowDialog();

@@ -34,10 +34,8 @@
             this.habit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.habitTableTableAdap = new trackrForms.trackrDBDataSetTableAdapters.habitTableTableAdapter();
-            this.habitTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.thresholdTextBox = new System.Windows.Forms.TextBox();
             this.posNegComboBox = new System.Windows.Forms.ComboBox();
-            this.habitTypeLabel = new System.Windows.Forms.Label();
+            this.newHabitNameLabel = new System.Windows.Forms.Label();
             this.posNegLabel = new System.Windows.Forms.Label();
             this.thresholdLabel = new System.Windows.Forms.Label();
             this.acceptChangesButton = new System.Windows.Forms.Button();
@@ -47,8 +45,11 @@
             this.returnToDashboardButton = new System.Windows.Forms.Button();
             this.editDeleteContainer = new System.Windows.Forms.GroupBox();
             this.editDeleteLabel = new System.Windows.Forms.Label();
+            this.thresholdNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.newHabitNameTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.habitDataGridView)).BeginInit();
             this.editDeleteContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // editHabitButton
@@ -99,27 +100,6 @@
             // 
             this.habitTableTableAdap.ClearBeforeFill = true;
             // 
-            // habitTypeComboBox
-            // 
-            this.habitTypeComboBox.FormattingEnabled = true;
-            this.habitTypeComboBox.Items.AddRange(new object[] {
-            "Binary",
-            "Numerical"});
-            this.habitTypeComboBox.Location = new System.Drawing.Point(448, 183);
-            this.habitTypeComboBox.Name = "habitTypeComboBox";
-            this.habitTypeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.habitTypeComboBox.TabIndex = 4;
-            this.habitTypeComboBox.Visible = false;
-            this.habitTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.habitTypeComboBox_SelectedIndexChanged);
-            // 
-            // thresholdTextBox
-            // 
-            this.thresholdTextBox.Location = new System.Drawing.Point(459, 346);
-            this.thresholdTextBox.Name = "thresholdTextBox";
-            this.thresholdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.thresholdTextBox.TabIndex = 5;
-            this.thresholdTextBox.Visible = false;
-            // 
             // posNegComboBox
             // 
             this.posNegComboBox.FormattingEnabled = true;
@@ -132,15 +112,15 @@
             this.posNegComboBox.TabIndex = 6;
             this.posNegComboBox.Visible = false;
             // 
-            // habitTypeLabel
+            // newHabitNameLabel
             // 
-            this.habitTypeLabel.AutoSize = true;
-            this.habitTypeLabel.Location = new System.Drawing.Point(480, 160);
-            this.habitTypeLabel.Name = "habitTypeLabel";
-            this.habitTypeLabel.Size = new System.Drawing.Size(59, 13);
-            this.habitTypeLabel.TabIndex = 7;
-            this.habitTypeLabel.Text = "Habit Type";
-            this.habitTypeLabel.Visible = false;
+            this.newHabitNameLabel.AutoSize = true;
+            this.newHabitNameLabel.Location = new System.Drawing.Point(480, 160);
+            this.newHabitNameLabel.Name = "newHabitNameLabel";
+            this.newHabitNameLabel.Size = new System.Drawing.Size(63, 13);
+            this.newHabitNameLabel.TabIndex = 7;
+            this.newHabitNameLabel.Text = "Habit Name";
+            this.newHabitNameLabel.Visible = false;
             // 
             // posNegLabel
             // 
@@ -164,7 +144,7 @@
             // 
             // acceptChangesButton
             // 
-            this.acceptChangesButton.Location = new System.Drawing.Point(450, 386);
+            this.acceptChangesButton.Location = new System.Drawing.Point(454, 386);
             this.acceptChangesButton.Name = "acceptChangesButton";
             this.acceptChangesButton.Size = new System.Drawing.Size(110, 23);
             this.acceptChangesButton.TabIndex = 10;
@@ -210,6 +190,8 @@
             // editDeleteContainer
             // 
             this.editDeleteContainer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.editDeleteContainer.Controls.Add(this.newHabitNameTextBox);
+            this.editDeleteContainer.Controls.Add(this.thresholdNumericUpDown);
             this.editDeleteContainer.Controls.Add(this.editDeleteLabel);
             this.editDeleteContainer.Controls.Add(this.habitDataGridView);
             this.editDeleteContainer.Controls.Add(this.returnToDashboardButton);
@@ -217,13 +199,11 @@
             this.editDeleteContainer.Controls.Add(this.currentlyTrackingCheckBox);
             this.editDeleteContainer.Controls.Add(this.deleteHabitButton);
             this.editDeleteContainer.Controls.Add(this.currentlyTrackingLabel);
-            this.editDeleteContainer.Controls.Add(this.habitTypeComboBox);
             this.editDeleteContainer.Controls.Add(this.acceptChangesButton);
-            this.editDeleteContainer.Controls.Add(this.thresholdTextBox);
             this.editDeleteContainer.Controls.Add(this.thresholdLabel);
             this.editDeleteContainer.Controls.Add(this.posNegComboBox);
             this.editDeleteContainer.Controls.Add(this.posNegLabel);
-            this.editDeleteContainer.Controls.Add(this.habitTypeLabel);
+            this.editDeleteContainer.Controls.Add(this.newHabitNameLabel);
             this.editDeleteContainer.Location = new System.Drawing.Point(98, 12);
             this.editDeleteContainer.Name = "editDeleteContainer";
             this.editDeleteContainer.Size = new System.Drawing.Size(658, 478);
@@ -245,6 +225,24 @@
             this.editDeleteLabel.Text = "Edit or Delete Habits";
             this.editDeleteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // thresholdNumericUpDown
+            // 
+            this.thresholdNumericUpDown.DecimalPlaces = 2;
+            this.thresholdNumericUpDown.Location = new System.Drawing.Point(465, 346);
+            this.thresholdNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.thresholdNumericUpDown.Name = "thresholdNumericUpDown";
+            this.thresholdNumericUpDown.Size = new System.Drawing.Size(90, 20);
+            this.thresholdNumericUpDown.TabIndex = 15;
+            this.thresholdNumericUpDown.Visible = false;
+            // 
+            // newHabitNameTextBox
+            // 
+            this.newHabitNameTextBox.Location = new System.Drawing.Point(448, 185);
+            this.newHabitNameTextBox.Name = "newHabitNameTextBox";
+            this.newHabitNameTextBox.Size = new System.Drawing.Size(121, 20);
+            this.newHabitNameTextBox.TabIndex = 16;
+            this.newHabitNameTextBox.Visible = false;
+            // 
             // EditHabits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.habitDataGridView)).EndInit();
             this.editDeleteContainer.ResumeLayout(false);
             this.editDeleteContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,10 +266,8 @@
         private trackrDBDataSetTableAdapters.habitTableTableAdapter habitTableTableAdap;
         private System.Windows.Forms.DataGridViewTextBoxColumn habit;
         private System.Windows.Forms.DataGridViewCheckBoxColumn tracked;
-        private System.Windows.Forms.ComboBox habitTypeComboBox;
-        private System.Windows.Forms.TextBox thresholdTextBox;
         private System.Windows.Forms.ComboBox posNegComboBox;
-        private System.Windows.Forms.Label habitTypeLabel;
+        private System.Windows.Forms.Label newHabitNameLabel;
         private System.Windows.Forms.Label posNegLabel;
         private System.Windows.Forms.Label thresholdLabel;
         private System.Windows.Forms.Button acceptChangesButton;
@@ -280,5 +277,7 @@
         private System.Windows.Forms.Button returnToDashboardButton;
         private System.Windows.Forms.GroupBox editDeleteContainer;
         private System.Windows.Forms.Label editDeleteLabel;
+        private System.Windows.Forms.NumericUpDown thresholdNumericUpDown;
+        private System.Windows.Forms.TextBox newHabitNameTextBox;
     }
 }
