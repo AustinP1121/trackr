@@ -55,7 +55,7 @@
             // editHabitButton
             // 
             this.editHabitButton.Location = new System.Drawing.Point(105, 475);
-            this.editHabitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editHabitButton.Margin = new System.Windows.Forms.Padding(4);
             this.editHabitButton.Name = "editHabitButton";
             this.editHabitButton.Size = new System.Drawing.Size(113, 28);
             this.editHabitButton.TabIndex = 1;
@@ -66,7 +66,7 @@
             // deleteHabitButton
             // 
             this.deleteHabitButton.Location = new System.Drawing.Point(244, 475);
-            this.deleteHabitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteHabitButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteHabitButton.Name = "deleteHabitButton";
             this.deleteHabitButton.Size = new System.Drawing.Size(120, 28);
             this.deleteHabitButton.TabIndex = 2;
@@ -82,11 +82,11 @@
             this.tracked});
             this.habitDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.habitDataGridView.Location = new System.Drawing.Point(75, 98);
-            this.habitDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.habitDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.habitDataGridView.Name = "habitDataGridView";
             this.habitDataGridView.RowHeadersWidth = 51;
             this.habitDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.habitDataGridView.Size = new System.Drawing.Size(324, 352);
+            this.habitDataGridView.Size = new System.Drawing.Size(431, 352);
             this.habitDataGridView.TabIndex = 3;
             this.habitDataGridView.SelectionChanged += new System.EventHandler(this.habitDataGridView_SelectionChanged);
             // 
@@ -115,7 +115,7 @@
             "Positive",
             "Negative"});
             this.posNegComboBox.Location = new System.Drawing.Point(597, 327);
-            this.posNegComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.posNegComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.posNegComboBox.Name = "posNegComboBox";
             this.posNegComboBox.Size = new System.Drawing.Size(160, 24);
             this.posNegComboBox.TabIndex = 6;
@@ -157,7 +157,7 @@
             // acceptChangesButton
             // 
             this.acceptChangesButton.Location = new System.Drawing.Point(605, 475);
-            this.acceptChangesButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.acceptChangesButton.Margin = new System.Windows.Forms.Padding(4);
             this.acceptChangesButton.Name = "acceptChangesButton";
             this.acceptChangesButton.Size = new System.Drawing.Size(147, 28);
             this.acceptChangesButton.TabIndex = 10;
@@ -181,7 +181,7 @@
             // 
             this.currentlyTrackingCheckBox.AutoSize = true;
             this.currentlyTrackingCheckBox.Location = new System.Drawing.Point(668, 130);
-            this.currentlyTrackingCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentlyTrackingCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.currentlyTrackingCheckBox.Name = "currentlyTrackingCheckBox";
             this.currentlyTrackingCheckBox.Size = new System.Drawing.Size(18, 17);
             this.currentlyTrackingCheckBox.TabIndex = 12;
@@ -195,7 +195,7 @@
             // returnToDashboardButton
             // 
             this.returnToDashboardButton.Location = new System.Drawing.Point(357, 527);
-            this.returnToDashboardButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnToDashboardButton.Margin = new System.Windows.Forms.Padding(4);
             this.returnToDashboardButton.Name = "returnToDashboardButton";
             this.returnToDashboardButton.Size = new System.Drawing.Size(184, 28);
             this.returnToDashboardButton.TabIndex = 13;
@@ -221,9 +221,9 @@
             this.editDeleteContainer.Controls.Add(this.posNegLabel);
             this.editDeleteContainer.Controls.Add(this.newHabitNameLabel);
             this.editDeleteContainer.Location = new System.Drawing.Point(131, 15);
-            this.editDeleteContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editDeleteContainer.Margin = new System.Windows.Forms.Padding(4);
             this.editDeleteContainer.Name = "editDeleteContainer";
-            this.editDeleteContainer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editDeleteContainer.Padding = new System.Windows.Forms.Padding(4);
             this.editDeleteContainer.Size = new System.Drawing.Size(877, 588);
             this.editDeleteContainer.TabIndex = 14;
             this.editDeleteContainer.TabStop = false;
@@ -231,7 +231,7 @@
             // newHabitNameTextBox
             // 
             this.newHabitNameTextBox.Location = new System.Drawing.Point(597, 228);
-            this.newHabitNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newHabitNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.newHabitNameTextBox.Name = "newHabitNameTextBox";
             this.newHabitNameTextBox.Size = new System.Drawing.Size(160, 22);
             this.newHabitNameTextBox.TabIndex = 16;
@@ -272,7 +272,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 638);
             this.Controls.Add(this.editDeleteContainer);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EditHabits";
             this.Text = "Edit Habits";
             ((System.ComponentModel.ISupportInitialize)(this.habitDataGridView)).EndInit();

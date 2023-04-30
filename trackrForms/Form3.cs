@@ -28,6 +28,8 @@ namespace trackrForms
             trackrDBDataSet.habitHistoryTableDataTable habitHistoryTable = new trackrDBDataSet.habitHistoryTableDataTable();
             trackrDBDataSet.habitTableDataTable habitTable = new trackrDBDataSet.habitTableDataTable();
 
+            DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
+
             habitTableTableAdapter1.Fill(habitTable);
 
             int emptyRows = 0;
@@ -57,6 +59,9 @@ namespace trackrForms
                 //      habitName is a renaming of the variable habit for easier access.
                 string habitName = habit;
 
+                //firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
+                DateTime firstDate = (DateTime)habitHistoryTable.Rows[0].ItemArray[2];
+
                 //      percentCompletion stores the calculated value of the completion rate of a specific habit.
                 float completions = 0;
                 foreach (DataRow row in habitHistoryTable.Rows)
@@ -64,10 +69,17 @@ namespace trackrForms
                     if ((bool)row.ItemArray[5] == true)
                         completions++;
                 }
-                float percentCompletion = (completions / habitHistoryTable.Rows.Count * 100);
 
-                //firstDate retrieves the value of the first entry in the habitHistoryTable filled by specific habit (dates are in ascending order)
-                DateTime firstDate = (DateTime)habitHistoryTable.Rows[0].ItemArray[2];
+                double numDays = (int)(today - firstDate).TotalDays;
+
+                if (numDays == 0)
+                {
+                    numDays = 1;
+                }
+
+                double percentCompletion = (completions / numDays  * 100);
+
+                
 
               //  Add controls for the habit name, percent completion, and firstDate
 
