@@ -183,6 +183,7 @@ namespace trackrForms
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
                     currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
                     currentCurrentGoal.Size = new Size(121, 38);
+                    currentCurrentGoal.Maximum = 1000;
                     currentCurrentGoal.Margin = new Padding(3, 10, 3, 3);
                     currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
                     currentCurrentGoal.DecimalPlaces = 2;
