@@ -92,7 +92,6 @@ C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.ValueTuple.dll
 C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\ScottPlot.xml
 C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\farti\Desktop\localRepo\trackrForms\bin\Debug\System.ValueTuple.xml
-C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.GraphForm.resources
 C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.csproj.CopyComplete
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\Debug\ScottPlot.dll
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\Debug\ScottPlot.WinForms.dll

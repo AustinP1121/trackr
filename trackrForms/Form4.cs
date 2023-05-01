@@ -61,7 +61,6 @@ namespace trackrForms
             //  Fill the editing controls with information from the habitTable (note, these controls are still not visible).
             newHabitNameTextBox.Text = currentRow[1].ToString();
             binaryHabit = currentRow[2].ToString() == "Binary";
-            posNegComboBox.Text = bool.Parse(currentRow[4].ToString()) ? "Positive" : "Negative";
             thresholdNumericUpDown.Value = Convert.ToDecimal(currentRow[3]);
             currentlyTrackingCheckBox.Checked = bool.Parse(currentRow[5].ToString());
         }
@@ -94,8 +93,6 @@ namespace trackrForms
             //  Then, call the following event handler to test if the habit is numerical and needs more controls to edit.
             if (!binaryHabit)
             {
-                posNegLabel.Visible = true;
-                posNegComboBox.Visible = true;
                 thresholdLabel.Visible = true;
                 thresholdNumericUpDown.Visible = true;
             }
@@ -130,19 +127,32 @@ namespace trackrForms
             //  For binary habits, input the values that the user has edited, with "positive" set to true and "currentGoal" set to 1.
             if (binaryHabit)
             {
-                habitTableTableAdap.UpdateHabitEntry(1, true, currentlyTrackingCheckBox.Checked, originalHabit);
+                habitTableTableAdap.UpdateHabitEntry(newHabitNameTextBox.Text, 1, currentlyTrackingCheckBox.Checked, originalHabit, originalHabit);
             }
             //  For numerical habits, input the values that the user has edited.
             else
             {
-                habitTableTableAdap.UpdateHabitEntry(Convert.ToDecimal(thresholdNumericUpDown.Text),
-                    posNegComboBox.Text == "Positive", currentlyTrackingCheckBox.Checked, originalHabit);
+                habitTableTableAdap.UpdateHabitEntry(newHabitNameTextBox.Text, Convert.ToDecimal(thresholdNumericUpDown.Text),
+                    currentlyTrackingCheckBox.Checked, originalHabit, originalHabit);
             }
 
-            //  Update today's goal in habitHistoryTable as well, so that a history of the habit goals is kept. Also this is referenced by the daily dashboard.
-            habitHistoryTableTableAdap.UpdateEditHabit(newHabitNameTextBox.Text, Decimal.Parse(thresholdNumericUpDown.Text), originalHabit, DateTime.Today);
+            //  Get all habit entries with this name in habitHistoryTable
+            //  Since in descending order, the first one should be updated with new name and new goa'l
+            //  All others should not be.
 
-            //  Also, if the name of the habit was changed, update the name in all records in the habitHistoryTable
+            trackrDBDataSet.habitHistoryTableDataTable habitHistory = habitHistoryTableTableAdap.GetByHabit(originalHabit);
+
+            for(int i = 0; i < habitHistory.Rows.Count; i++)
+            {
+                if(i == habitHistory.Rows.Count - 1)
+                {
+                    habitHistoryTableTableAdap.UpdateEditHabit(newHabitNameTextBox.Text, Decimal.Parse(thresholdNumericUpDown.Text), originalHabit, DateTime.Today);
+                }
+                else
+                {
+                    habitHistoryTableTableAdap.UpdateHabitName(newHabitNameTextBox.Text, originalHabit, (DateTime)habitHistory.Rows[i].ItemArray[2]);
+                }
+            }
 
             //  Reset all the editing controls, and update the dataGridView to reflect changes..
             ResetControls();
@@ -156,8 +166,6 @@ namespace trackrForms
             currentlyTrackingCheckBox.Visible = false;
             newHabitNameLabel.Visible = false;
             newHabitNameTextBox.Visible = false;
-            posNegLabel.Visible = false;
-            posNegComboBox.Visible = false;
             thresholdLabel.Visible = false;
             thresholdNumericUpDown.Visible = false;
             acceptChangesButton.Visible = false;

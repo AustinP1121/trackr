@@ -109,7 +109,7 @@ namespace trackrForms
                 }
 
 
-                habitTableTableAdapter.Insert(name, type, goal, positive, true, 0, 0);
+                habitTableTableAdapter.Insert(name, type, goal, positive, true, 0, 0, "");
                 //  Insert value based on the user input
                 /*
                 habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 

@@ -236,6 +236,8 @@ namespace trackrForms
         //The user input on the dashboard gets uploaded into the habitHistory table
         private void UploadCurrentProgress()
         {
+            List<string> habitsOnDD = new List<string>();
+
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoiningIncludingNotTracked(habitHistory, DateTime.Parse(today));
@@ -254,7 +256,12 @@ namespace trackrForms
                     return;
                 string name = tableLayout.GetControlFromPosition(0, row).Text.Substring(2);
                 var c = tableLayout.GetControlFromPosition(2, row);
-                DataRow[] entry = habitHistory.Select("habit = '" + name + "'");
+
+                DataRow[] entry;
+
+                //  How do we fix this if the name of the habit is changed
+                entry = habitHistory.Select("habit = '" + name + "'");
+                
 
                 //  If entry = {} (no data row) then its name has been changed and this new name should be looked for
 
@@ -262,7 +269,18 @@ namespace trackrForms
                 decimal todaysGoal = Decimal.Parse(tableLayout.GetControlFromPosition(1, row).Text);
                 bool goalMet = false;
                 bool positive;
-                positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+                try
+                {
+                    positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+                }
+                
+                //  If entry was empty, select by previous name since a habit by that name no longer exists.
+                catch (IndexOutOfRangeException)
+                {
+                    entry = habitHistory.Select("previousHabitName = '" + name + "'");
+
+                    positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+                }
 
                 if (c is CheckBox)
                 {
