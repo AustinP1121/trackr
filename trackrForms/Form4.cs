@@ -109,14 +109,11 @@ namespace trackrForms
         {
             //  Input Validation
 
-            //  For Numerical habits...
-            if(thresholdNumericUpDown.Visible)
+            foreach(char c in newHabitNameTextBox.Text)
             {
-                //  Test threshold value
-                int test;
-                if(!Int32.TryParse(thresholdNumericUpDown.Text, out test) && (test > 100 || test < 0))
+                if(!(char.IsLetter(c) || c == ' ' || c == '\'' || c == '\"' || c == ',' || c == '?' || c == '!' || c == '.'))
                 {
-                    MessageBox.Show("Please input an integer value between 0 and 100 for your threshold.");
+                    MessageBox.Show("Please only enter letters and special characters from the list ([ ], [\'], [\"], [,], [?], [!], [.]).");
                     return;
                 }
             }
