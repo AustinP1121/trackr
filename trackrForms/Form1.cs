@@ -278,8 +278,17 @@ namespace trackrForms
                 catch (IndexOutOfRangeException)
                 {
                     entry = habitHistory.Select("previousHabitName = '" + name + "'");
+                }
 
+                try
+                {
                     positive = Boolean.Parse(entry[0].ItemArray[8].ToString());
+                }
+
+                //  If there is still no entry, then the habit had to be deleted
+                catch (IndexOutOfRangeException)
+                {
+                    continue;
                 }
 
                 if (c is CheckBox)
