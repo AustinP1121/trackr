@@ -57,10 +57,10 @@ namespace trackrForms
             // 
             // newHabitButton
             // 
-            this.newHabitButton.Location = new System.Drawing.Point(76, 437);
-            this.newHabitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.newHabitButton.Location = new System.Drawing.Point(101, 538);
+            this.newHabitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newHabitButton.Name = "newHabitButton";
-            this.newHabitButton.Size = new System.Drawing.Size(88, 23);
+            this.newHabitButton.Size = new System.Drawing.Size(117, 28);
             this.newHabitButton.TabIndex = 0;
             this.newHabitButton.Text = "New Habit";
             this.newHabitButton.UseVisualStyleBackColor = true;
@@ -74,20 +74,20 @@ namespace trackrForms
             this.syncToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1179, 28);
             this.menuStrip.TabIndex = 3;
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
@@ -97,25 +97,27 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.AutoScroll = true;
+            this.tableLayout.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayout.ColumnCount = 4;
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayout.Location = new System.Drawing.Point(47, 114);
-            this.tableLayout.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayout.Location = new System.Drawing.Point(63, 140);
+            this.tableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayout.Name = "tableLayout";
-            this.tableLayout.RowCount = 7;
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayout.Size = new System.Drawing.Size(500, 304);
+            this.tableLayout.RowCount = 8;
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayout.Size = new System.Drawing.Size(667, 382);
             this.tableLayout.TabIndex = 5;
+            this.tableLayout.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayout_CellPaint);
             this.tableLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayout_Paint);
             // 
             // todaysProgressLabel
@@ -125,10 +127,9 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.todaysProgressLabel.AutoSize = true;
             this.todaysProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.todaysProgressLabel.Location = new System.Drawing.Point(303, 88);
-            this.todaysProgressLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.todaysProgressLabel.Location = new System.Drawing.Point(404, 108);
             this.todaysProgressLabel.Name = "todaysProgressLabel";
-            this.todaysProgressLabel.Size = new System.Drawing.Size(104, 13);
+            this.todaysProgressLabel.Size = new System.Drawing.Size(135, 17);
             this.todaysProgressLabel.TabIndex = 7;
             this.todaysProgressLabel.Text = "Today\'s Progress";
             this.todaysProgressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,10 +141,9 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentStreakLabel.AutoSize = true;
             this.currentStreakLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentStreakLabel.Location = new System.Drawing.Point(440, 88);
-            this.currentStreakLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.currentStreakLabel.Location = new System.Drawing.Point(587, 108);
             this.currentStreakLabel.Name = "currentStreakLabel";
-            this.currentStreakLabel.Size = new System.Drawing.Size(89, 13);
+            this.currentStreakLabel.Size = new System.Drawing.Size(114, 17);
             this.currentStreakLabel.TabIndex = 8;
             this.currentStreakLabel.Text = "Current Streak";
             this.currentStreakLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,10 +155,9 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.goalColumnLabel.AutoSize = true;
             this.goalColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goalColumnLabel.Location = new System.Drawing.Point(220, 88);
-            this.goalColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.goalColumnLabel.Location = new System.Drawing.Point(293, 108);
             this.goalColumnLabel.Name = "goalColumnLabel";
-            this.goalColumnLabel.Size = new System.Drawing.Size(33, 13);
+            this.goalColumnLabel.Size = new System.Drawing.Size(42, 17);
             this.goalColumnLabel.TabIndex = 9;
             this.goalColumnLabel.Text = "Goal";
             this.goalColumnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,20 +169,19 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.habitColumnLabel.AutoSize = true;
             this.habitColumnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.habitColumnLabel.Location = new System.Drawing.Point(91, 88);
-            this.habitColumnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.habitColumnLabel.Location = new System.Drawing.Point(121, 108);
             this.habitColumnLabel.Name = "habitColumnLabel";
-            this.habitColumnLabel.Size = new System.Drawing.Size(37, 13);
+            this.habitColumnLabel.Size = new System.Drawing.Size(46, 17);
             this.habitColumnLabel.TabIndex = 0;
             this.habitColumnLabel.Text = "Habit";
             this.habitColumnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // displayMetricsButton
             // 
-            this.displayMetricsButton.Location = new System.Drawing.Point(421, 437);
-            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.displayMetricsButton.Location = new System.Drawing.Point(561, 538);
+            this.displayMetricsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.displayMetricsButton.Name = "displayMetricsButton";
-            this.displayMetricsButton.Size = new System.Drawing.Size(94, 24);
+            this.displayMetricsButton.Size = new System.Drawing.Size(125, 30);
             this.displayMetricsButton.TabIndex = 6;
             this.displayMetricsButton.Text = "Display Metrics";
             this.displayMetricsButton.UseVisualStyleBackColor = true;
@@ -191,10 +189,10 @@ namespace trackrForms
             // 
             // editHabitsButton
             // 
-            this.editHabitsButton.Location = new System.Drawing.Point(244, 437);
-            this.editHabitsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.editHabitsButton.Location = new System.Drawing.Point(325, 538);
+            this.editHabitsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editHabitsButton.Name = "editHabitsButton";
-            this.editHabitsButton.Size = new System.Drawing.Size(91, 24);
+            this.editHabitsButton.Size = new System.Drawing.Size(121, 30);
             this.editHabitsButton.TabIndex = 7;
             this.editHabitsButton.Text = "Edit Habits";
             this.editHabitsButton.UseVisualStyleBackColor = true;
@@ -207,10 +205,9 @@ namespace trackrForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLabel.Location = new System.Drawing.Point(128, 16);
-            this.dateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dateLabel.Location = new System.Drawing.Point(171, 20);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(336, 31);
+            this.dateLabel.Size = new System.Drawing.Size(417, 39);
             this.dateLabel.TabIndex = 10;
             this.dateLabel.Text = "<DateTime Placeholder>";
             this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -251,21 +248,23 @@ namespace trackrForms
             this.dailyDashboardContainer.Controls.Add(this.editHabitsButton);
             this.dailyDashboardContainer.Controls.Add(this.goalColumnLabel);
             this.dailyDashboardContainer.Controls.Add(this.displayMetricsButton);
-            this.dailyDashboardContainer.Location = new System.Drawing.Point(126, 27);
+            this.dailyDashboardContainer.Location = new System.Drawing.Point(168, 33);
+            this.dailyDashboardContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dailyDashboardContainer.Name = "dailyDashboardContainer";
-            this.dailyDashboardContainer.Size = new System.Drawing.Size(590, 500);
+            this.dailyDashboardContainer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dailyDashboardContainer.Size = new System.Drawing.Size(787, 615);
             this.dailyDashboardContainer.TabIndex = 11;
             this.dailyDashboardContainer.TabStop = false;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1179, 690);
             this.Controls.Add(this.dailyDashboardContainer);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Dashboard";
             this.Text = "trackr";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);

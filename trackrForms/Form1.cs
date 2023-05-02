@@ -185,6 +185,7 @@ namespace trackrForms
                     currentCurrentGoal.Size = new Size(121, 38);
                     currentCurrentGoal.Maximum = 1000;
                     currentCurrentGoal.Margin = new Padding(3, 10, 3, 3);
+                    //currentCurrentGoal.UpDownAlign = ContentAlignment.MiddleCenter;
                     currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
                     currentCurrentGoal.DecimalPlaces = 2;
 
@@ -198,9 +199,10 @@ namespace trackrForms
                     CheckBox currentCurrentGoal = new CheckBox();
                     tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
                     currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
-                    //currentCurrentGoal.Size = new Size(121, 38);
-                    //currentCurrentGoal.Dock = DockStyle.Left;
-                    currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
+                    currentCurrentGoal.Size = new Size(121, 38);
+                    //currentCurrentGoal.Dock = DockStyle.Fill;
+                    currentCurrentGoal.CheckAlign = ContentAlignment.MiddleCenter;
+                    //currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
                     if (Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString()) == 1)
                     {
                         currentCurrentGoal.Checked = true;
@@ -222,6 +224,22 @@ namespace trackrForms
                 currentStreak.TextAlign = ContentAlignment.MiddleCenter;
                 currentStreak.Size = new Size(121, 38);
                 tableLayout.Controls.Add(currentStreak, 3, currentRow);
+
+                bool goalMet = Boolean.Parse(habitHistory.Rows[currentRow].ItemArray[5].ToString());
+                Color color;
+                if (goalMet)
+                {
+                    color = Color.LightGreen;
+                }
+                else
+                {
+                    color = SystemColors.Control;
+                }
+                for (int j = 0; j < 4; j++)
+                {
+                    tableLayout.GetControlFromPosition(j, currentRow).BackColor = color;
+                }
+
 
                 dbUpdated = false;
             }
@@ -324,12 +342,60 @@ namespace trackrForms
 
         private void numericChanged(object sender, EventArgs e)
         {
-            //TODO: Conditional  formatting based on if goal is met yet
+            //Control object            
+            Control C = (Control)sender;
+            var num = (NumericUpDown)C;
+
+            //Gets the row of the graph button
+            TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
+            int row = p.Row;
+
+            bool isPositive = tableLayout.GetControlFromPosition(0, row).Text.Substring(0,1) == "+";
+            decimal goal = Decimal.Parse(tableLayout.GetControlFromPosition(1, row).Text);
+
+            Color color;
+            
+            if ((isPositive && num.Value >= goal) || (!isPositive&& num.Value <= goal))
+            {
+                color = Color.LightGreen;
+                
+            }
+            else
+            {
+                color = SystemColors.Control;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                tableLayout.GetControlFromPosition(i, row).BackColor = color;
+            }
+
         }
 
         private void checkChanged(object sender, EventArgs e)
         {
             //TODO: Conditional  formatting based on if goal is met yet
+            //Control object            
+            Control C = (Control)sender;
+            var chk = (CheckBox)C;
+
+            //Gets the row of the graph button
+            TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
+            int row = p.Row;
+
+            Color color;
+
+            if (chk.Checked)
+            {
+                color = Color.LightGreen;
+            }
+            else
+            {
+                color = SystemColors.Control;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                tableLayout.GetControlFromPosition(i, row).BackColor = color;
+            }
         }
 
         private void displayMetricsButton_Click(object sender, EventArgs e)
@@ -353,6 +419,23 @@ namespace trackrForms
             //How do we get this function to call after the form closes
             //if we can't access it from the editForm_Closing event handler
             //LoadDataFromTable();
+        }
+
+        private void tableLayout_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            //Control object            
+            Control C = (Control)sender;
+
+            if (C is NumericUpDown)
+            {
+                var num = (NumericUpDown)C;
+            }
+
+            else if (C is CheckBox)
+            {
+                var chk = (CheckBox)C;
+            }
+            
         }
     }
 }

@@ -102,7 +102,6 @@ C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\bin\Debug\System.ValueTuple.xml
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\obj\Debug\trackrForms.CreateMetrics.resources
-C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\obj\Debug\trackrForms.GraphForm.resources
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\obj\Debug\trackrForms.csproj.CopyComplete
 C:\Users\farti\Desktop\localRepo\trackrForms\obj\Debug\trackrForms.EditHabits.resources
 C:\Users\jtvog\OneDrive\Documents\MSU Spring 2023\CS 380\trackr\trackrForms\obj\Debug\trackrForms.EditHabits.resources
