@@ -21,21 +21,19 @@ namespace trackrForms
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        //Changes habit options based on binary or numerical
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
+            //Displays positive/negative options and goal numeric up down if habit is numerical
             if (typeNameComboBox.SelectedItem.ToString() == "Numerical")
             {
                 pos_negLabel.Visible = true;
                 pos_negComboBox.Visible = true;
                 thresholdLabel.Visible = true;
                 thresholdNumericUpDown.Visible = true;
-                more_lessLabel.Visible = false;
+                more_lessLabel.Visible = true;
             }
+            //Hides other boxes if habit is binary
             else
             {
                 pos_negLabel.Visible = false;
@@ -46,6 +44,7 @@ namespace trackrForms
             }
         }
 
+        //Changes threhold label based on positive/negative selection
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
             if (pos_negComboBox.SelectedItem.ToString() == "Positive")
@@ -72,10 +71,6 @@ namespace trackrForms
             trackrDBDataSet.habitTableDataTable newTable = new trackrDBDataSet.habitTableDataTable();
             habitTableTableAdapter.Fill(newTable);
 
-            //var historyAdapter = new habitHistoryTableTableAdapter();
-            //habitHistoryTableTableAdapter h = new trackrForms.trackrDBDataSetTableAdapters.habitHistoryTableTableAdapter();
-            //h.Fill(habitHistory);
-
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter1.Fill(habitHistory);
 
@@ -92,7 +87,6 @@ namespace trackrForms
 
             try
             {
-                int id = newTable.Rows.Count + 1;
                 string name = habitNameTextBox.Text;
                 string type = typeNameComboBox.Text;
                 decimal goal = typeNameComboBox.Text == "Binary" ? 1 : Decimal.Parse(thresholdNumericUpDown.Value.ToString());
@@ -110,14 +104,7 @@ namespace trackrForms
 
 
                 habitTableTableAdapter.Insert(name, type, goal, positive, true, 0, 0, "");
-                //  Insert value based on the user input
-                /*
-                habitTableTableAdapter.Insert(newTable.Rows.Count + 1, habitNameTextBox.Text, typeNameComboBox.Text, 
-                    typeNameComboBox.Text == "Binary" ? 1 : Int32.Parse(thresholdNumericUpDown.Value.ToString()),
-                    pos_negComboBox.Text == "Positive" || typeNameComboBox.Text == "Binary", true, 0);
-                */
-                //string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
-                
+                //Initialize entry to default value of 0
                 habitHistoryTableTableAdapter1.Insert(name, today, 0, goal, goalMet);
             }
             catch (Exception ex)
@@ -138,9 +125,5 @@ namespace trackrForms
             Close();
         }
 
-        private void CreateHabit_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

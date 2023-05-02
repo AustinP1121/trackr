@@ -17,26 +17,12 @@ namespace trackrForms
        //What is this?
         public static bool dbUpdated = false;
 
-        
         public Dashboard()
         {
             InitializeComponent();  
         }
 
-        //Create Habit Button Click
-        private void button1_Click(object sender, EventArgs e)
-        {
-            UploadCurrentProgress();
-            var myForm = new CreateHabit();
-            myForm.Show();
-        }
-
-        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UploadCurrentProgress();
-            tableLayout.Controls.Clear();
-            LoadDataFromTable();
-        }
+        
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
@@ -44,13 +30,12 @@ namespace trackrForms
             dateLabel.Visible = true;
             CheckLastDate();
             LoadDataFromTable();
-
-            // TODO: This line of code loads data into the 'trackrDBDataSet.habitHistoryTable' table. You can move, or remove it, as needed.
-            this.habitHistoryTableTableAdapter.Fill(this.trackrDBDataSet.habitHistoryTable);
         } 
 
         //Inputs new entries into habitHistory because it is a new day
         //Sets a value of todaysValue as 0, until the user inputs values into dashboard
+        //Resets streak to 0 if the user has skipped days
+        //Increments streak if the goal was met yesterday
         private void CheckLastDate()
         {
             DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
@@ -80,8 +65,11 @@ namespace trackrForms
                 trackrDBDataSet.habitHistoryTableDataTable mostRecentHabits = new trackrDBDataSet.habitHistoryTableDataTable();
                 habitHistoryTableTableAdapter.FillByDateJoining(mostRecentHabits, lastDate);
 
+
+                //for loop to update streak
                 for (int currentRow = 0; currentRow < mostRecentHabits.Rows.Count; currentRow++)
                 {
+                    //Retrieve info from database
                     string name = mostRecentHabits.Rows[currentRow].ItemArray[1].ToString();
                     bool goalMet = Boolean.Parse(mostRecentHabits.Rows[currentRow].ItemArray[5].ToString());
                     int streak = Int32.Parse(mostRecentHabits.Rows[currentRow].ItemArray[10].ToString());
@@ -129,14 +117,10 @@ namespace trackrForms
 
         private void LoadDataFromTable()
         {
-           //No longer using this Table Adapter
-           // trackrDBDataSet.habitTableDataTable habitData = new trackrDBDataSet.habitTableDataTable();
-           // habitTableTableAdapter.Fill(habitData);
-
-            //I am using a new Table Adapter that combines the two data tables based on currently tracked habits
 
             //Right now, all the dates should go into the database as 12:00:00 AM or 00:00:00
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
+
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoining(habitHistory, DateTime.Parse(today));
 
@@ -157,10 +141,10 @@ namespace trackrForms
 
 
                 currentHabit.Text = posOrNeg + habitHistory.Rows[currentRow].ItemArray[1].ToString();
-                // [0].ToString().ToUpper() + habitHistory.Rows[currentRow].ItemArray[1].ToString().Substring(1)
                 currentHabit.Name = "currentHabit" + currentRow + "Label";
                 currentHabit.TextAlign = ContentAlignment.MiddleCenter;
                 currentHabit.Size = new Size(121, 38);
+                //Conditional formatting based on if goal was met
                 currentHabit.ForeColor = goalMet ? Color.Green : SystemColors.ControlText;
                 tableLayout.Controls.Add(currentHabit, 0, currentRow);
 
@@ -173,7 +157,6 @@ namespace trackrForms
                     goalText = goalText.Substring(0, i);
                 }
                 currentGoal.Text = goalText;
-                currentGoal.Name = "currentGoal" + currentRow + "Label";
                 currentGoal.TextAlign = ContentAlignment.MiddleCenter;
                 currentGoal.Size = new Size(121, 38);
                 tableLayout.Controls.Add(currentGoal, 1, currentRow);
@@ -183,85 +166,53 @@ namespace trackrForms
                 //case for numeric goal
                 if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Numerical")
                 {
-                    NumericUpDown currentCurrentGoal = new NumericUpDown();
-                    tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
-                    currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
-                    currentCurrentGoal.Size = new Size(121, 38);
-                    currentCurrentGoal.Maximum = 1000;
-                    currentCurrentGoal.Margin = new Padding(3, 10, 3, 3);
-                    //currentCurrentGoal.UpDownAlign = ContentAlignment.MiddleCenter;
-                    currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
-                    currentCurrentGoal.DecimalPlaces = 2;
-                    currentCurrentGoal.BackColor = goalMet ? Color.LightGreen : SystemColors.Control;
+                   //Add numeric up down to table
+                    NumericUpDown todaysValue = new NumericUpDown();
+                    
+                    todaysValue.Size = new Size(121, 38);
+                    todaysValue.Maximum = 1000;
+                    todaysValue.Margin = new Padding(3, 10, 3, 3);
+                    todaysValue.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
+                    todaysValue.DecimalPlaces = 2;
+                    //Conditional formatting based on goal met
+                    todaysValue.BackColor = goalMet ? Color.LightGreen : SystemColors.Control;
+                    tableLayout.Controls.Add(todaysValue, 2, currentRow);
                     //Adds event to be associated with conditional formating
-                    currentCurrentGoal.ValueChanged += new System.EventHandler(numericChanged);
+                    todaysValue.ValueChanged += new System.EventHandler(numericChanged);
                 }
 
                 //case for binary goal
                 else if (habitHistory.Rows[currentRow].ItemArray[6].ToString() == "Binary")
                 {
-                    CheckBox currentCurrentGoal = new CheckBox();
-                    tableLayout.Controls.Add(currentCurrentGoal, 2, currentRow);
-                    currentCurrentGoal.Name = "currentCurrentGoal" + currentRow + "Label";
-                    currentCurrentGoal.Size = new Size(121, 38);
-                    //currentCurrentGoal.Dock = DockStyle.Fill;
-                    currentCurrentGoal.CheckAlign = ContentAlignment.MiddleCenter;
-                    currentCurrentGoal.Margin = new Padding(48, 9, 48, 9);
+                    //Add checkbox object for binary habits
+                    CheckBox goalCheck = new CheckBox();
+                    goalCheck.Size = new Size(121, 38);
+                    goalCheck.CheckAlign = ContentAlignment.MiddleCenter;
+                    goalCheck.Margin = new Padding(48, 9, 48, 9);
                     if (Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString()) == 1)
                     {
-                        currentCurrentGoal.Checked = true;
+                        goalCheck.Checked = true;
                     }
                     else
                     {
-                        currentCurrentGoal.Checked = false;
+                        goalCheck.Checked = false;
                     }
-                    
+                    tableLayout.Controls.Add(goalCheck, 2, currentRow);
 
                     //Event associated with conditional formatting
-                    currentCurrentGoal.CheckStateChanged += new System.EventHandler(checkChanged);
+                    goalCheck.CheckStateChanged += new System.EventHandler(checkChanged);
                 }
 
                 //  Streak Column
                 Label currentStreak = new Label();
                 currentStreak.Text = habitHistory.Rows[currentRow].ItemArray[10].ToString();
-                currentStreak.Name = "currentStreak" + currentRow + "Label";
                 currentStreak.TextAlign = ContentAlignment.MiddleCenter;
                 currentStreak.Size = new Size(121, 38);
                 tableLayout.Controls.Add(currentStreak, 3, currentRow);
 
-                /*
-                Color bcolor, fcolor;
-
-                if (goalMet)
-                {
-                    fcolor = Color.Green;
-                    bcolor = Color.LightGreen;
-                }
-                else
-                {
-                    fcolor = SystemColors.ControlText;
-                    bcolor = SystemColors.Control;
-                }
-                tableLayout.GetControlFromPosition(0, currentRow).ForeColor = fcolor;
-                tableLayout.GetControlFromPosition(2, currentRow).BackColor = bcolor;
-                */
-
-                /*
-                for (int j = 0; j < 4; j++)
-                {
-                    tableLayout.GetControlFromPosition(j, currentRow).BackColor = color;
-                }
-                */
-
 
                 dbUpdated = false;
             }
-        }
-
-        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //TODO: Write Current Progress into habitHistory data table
-            UploadCurrentProgress();
         }
 
         //The user input on the dashboard gets uploaded into the habitHistory table
@@ -279,7 +230,6 @@ namespace trackrForms
             habitTableTableAdapter.FillByCurrentlyTracked(getLength);
             int tableEntries = getLength.Rows.Count;
 
-            //for (int row = 0; row < tableLayout.RowCount; row++)
             for (int row = 0; row < tableEntries; row++)
             {
                 //  When adding a control, this is needed as there are now more table entries than drawn in the tableLayout.
@@ -322,6 +272,7 @@ namespace trackrForms
                     continue;
                 }
 
+                //Case if the control is a checkbox (binary habit)
                 if (c is CheckBox)
                 {
                     CheckBox chk = (CheckBox)c;
@@ -335,6 +286,7 @@ namespace trackrForms
                         todaysValue = 0;
                     }
                 }
+                //Case if control is numericUpDown (numerical habit)
                 else if (c is NumericUpDown)
                 {
                     NumericUpDown num = (NumericUpDown)c;
@@ -348,46 +300,37 @@ namespace trackrForms
                         goalMet = true;
                     }
                 }
-
+                //Update entry in habit history table
                 habitHistoryTableTableAdapter.UpdateTodaysProgress(todaysValue, goalMet, name, DateTime.Parse(today));
             }
         }
 
+        //Event handler for conditional formatting if numerical value is changed
         private void numericChanged(object sender, EventArgs e)
         {
             //Control object            
             Control C = (Control)sender;
             var num = (NumericUpDown)C;
 
-            //Gets the row of the graph button
             TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
             int row = p.Row;
 
             bool isPositive = tableLayout.GetControlFromPosition(0, row).Text.Substring(0,1) == "+";
             decimal goal = Decimal.Parse(tableLayout.GetControlFromPosition(1, row).Text);
 
-            //Color bcolor, fcolor;
-
+            //Case if goal is met - green highlights
             if ((isPositive && num.Value >= goal) || (!isPositive && num.Value <= goal))
             {
                 tableLayout.GetControlFromPosition(0, row).ForeColor = Color.Green;
                 tableLayout.GetControlFromPosition(2, row).BackColor = Color.LightGreen;
             }
+            //Case if goal is not met - default colors
             else
             {
                 tableLayout.GetControlFromPosition(0, row).ForeColor = SystemColors.ControlText;
                 tableLayout.GetControlFromPosition(2, row).BackColor = SystemColors.Control;
             }
 
-            /*
-            tableLayout.GetControlFromPosition(0, row).ForeColor = fcolor;
-            tableLayout.GetControlFromPosition(2, row).BackColor = bcolor;
-            
-            for (int i = 0; i < 4; i++)
-            {
-                tableLayout.GetControlFromPosition(i, row).BackColor = color;
-            }
-            */
 
         }
 
@@ -398,35 +341,24 @@ namespace trackrForms
             Control C = (Control)sender;
             var chk = (CheckBox)C;
 
-            //Gets the row of the graph button
             TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
             int row = p.Row;
 
-            //Color bcolor, fcolor;
-
+            //Assigns color to text based on if goal was met
             tableLayout.GetControlFromPosition(0, row).ForeColor = chk.Checked ? Color.Green : SystemColors.ControlText;
 
-            /*
-            if (chk.Checked)
-            {
-                tableLayout.GetControlFromPosition(0, row).ForeColor = Color.Green;
-            }
-            else
-            {
-                tableLayout.GetControlFromPosition(0, row).ForeColor = SystemColors.ControlText;
-            }
-
-            
-            tableLayout.GetControlFromPosition(0, row).ForeColor = fcolor;
-            tableLayout.GetControlFromPosition(2, row).BackColor = bcolor;
-            
-            for (int i = 0; i < 4; i++)
-            {
-                tableLayout.GetControlFromPosition(i, row).BackColor = color;
-            }
-            */
         }
 
+
+        //Create Habit Button Click
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UploadCurrentProgress();
+            var myForm = new CreateHabit();
+            myForm.Show();
+        }
+
+        //Display metrics click
         private void displayMetricsButton_Click(object sender, EventArgs e)
         {
             UploadCurrentProgress();
@@ -434,37 +366,28 @@ namespace trackrForms
             form.Show();
         }
 
-        private void tableLayout_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        //Edit habits click
         private void EditHabitsButton_Click(object sender, EventArgs e)
         {
             UploadCurrentProgress();
             EditHabits form = new EditHabits();
             form.Show();
 
-            //How do we get this function to call after the form closes
-            //if we can't access it from the editForm_Closing event handler
-            //LoadDataFromTable();
         }
 
-        private void tableLayout_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        //Syncing button click
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Control object            
-            Control C = (Control)sender;
-
-            if (C is NumericUpDown)
-            {
-                var num = (NumericUpDown)C;
-            }
-
-            else if (C is CheckBox)
-            {
-                var chk = (CheckBox)C;
-            }
-            
+            UploadCurrentProgress();
+            tableLayout.Controls.Clear();
+            LoadDataFromTable();
         }
+
+        //Uploads Daily Dashboard progress into database upon form closing
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UploadCurrentProgress();
+        }
+
     }
 }

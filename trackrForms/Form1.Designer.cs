@@ -109,8 +109,6 @@ namespace trackrForms
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayout.Size = new System.Drawing.Size(667, 382);
             this.tableLayout.TabIndex = 5;
-            this.tableLayout.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayout_CellPaint);
-            this.tableLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayout_Paint);
             // 
             // todaysProgressLabel
             // 

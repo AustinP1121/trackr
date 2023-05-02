@@ -103,7 +103,6 @@ namespace trackrForms
             this.typeNameComboBox.Name = "typeNameComboBox";
             this.typeNameComboBox.Size = new System.Drawing.Size(121, 24);
             this.typeNameComboBox.TabIndex = 3;
-            this.typeNameComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.typeNameComboBox.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // pos_negComboBox
@@ -338,7 +337,6 @@ namespace trackrForms
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CreateHabit";
             this.Text = "New Habit";
-            this.Load += new System.EventHandler(this.CreateHabit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.thresholdNumericUpDown)).EndInit();
             this.scheduleGroupBox.ResumeLayout(false);
             this.scheduleGroupBox.PerformLayout();
