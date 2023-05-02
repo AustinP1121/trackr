@@ -40,7 +40,7 @@ namespace trackrForms
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
+            dateLabel.Text = DateTime.Now.ToString("dddd, MMMM d, yyyy");
             dateLabel.Visible = true;
             CheckLastDate();
             LoadDataFromTable();
@@ -153,11 +153,15 @@ namespace trackrForms
                     posOrNeg = "- ";
                 }
 
+                bool goalMet = Boolean.Parse(habitHistory.Rows[currentRow].ItemArray[5].ToString());
+
+
                 currentHabit.Text = posOrNeg + habitHistory.Rows[currentRow].ItemArray[1].ToString();
                 // [0].ToString().ToUpper() + habitHistory.Rows[currentRow].ItemArray[1].ToString().Substring(1)
                 currentHabit.Name = "currentHabit" + currentRow + "Label";
                 currentHabit.TextAlign = ContentAlignment.MiddleCenter;
                 currentHabit.Size = new Size(121, 38);
+                currentHabit.ForeColor = goalMet ? Color.Green : SystemColors.ControlText;
                 tableLayout.Controls.Add(currentHabit, 0, currentRow);
 
                 //  Goal Column
@@ -188,7 +192,7 @@ namespace trackrForms
                     //currentCurrentGoal.UpDownAlign = ContentAlignment.MiddleCenter;
                     currentCurrentGoal.Value = Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString());
                     currentCurrentGoal.DecimalPlaces = 2;
-
+                    currentCurrentGoal.BackColor = goalMet ? Color.LightGreen : SystemColors.Control;
                     //Adds event to be associated with conditional formating
                     currentCurrentGoal.ValueChanged += new System.EventHandler(numericChanged);
                 }
@@ -202,7 +206,7 @@ namespace trackrForms
                     currentCurrentGoal.Size = new Size(121, 38);
                     //currentCurrentGoal.Dock = DockStyle.Fill;
                     currentCurrentGoal.CheckAlign = ContentAlignment.MiddleCenter;
-                    //currentCurrentGoal.Margin = new Padding(57, 8, 3, 3);
+                    currentCurrentGoal.Margin = new Padding(48, 9, 48, 9);
                     if (Decimal.Parse(habitHistory.Rows[currentRow].ItemArray[3].ToString()) == 1)
                     {
                         currentCurrentGoal.Checked = true;
@@ -225,20 +229,29 @@ namespace trackrForms
                 currentStreak.Size = new Size(121, 38);
                 tableLayout.Controls.Add(currentStreak, 3, currentRow);
 
-                bool goalMet = Boolean.Parse(habitHistory.Rows[currentRow].ItemArray[5].ToString());
-                Color color;
+                /*
+                Color bcolor, fcolor;
+
                 if (goalMet)
                 {
-                    color = Color.LightGreen;
+                    fcolor = Color.Green;
+                    bcolor = Color.LightGreen;
                 }
                 else
                 {
-                    color = SystemColors.Control;
+                    fcolor = SystemColors.ControlText;
+                    bcolor = SystemColors.Control;
                 }
+                tableLayout.GetControlFromPosition(0, currentRow).ForeColor = fcolor;
+                tableLayout.GetControlFromPosition(2, currentRow).BackColor = bcolor;
+                */
+
+                /*
                 for (int j = 0; j < 4; j++)
                 {
                     tableLayout.GetControlFromPosition(j, currentRow).BackColor = color;
                 }
+                */
 
 
                 dbUpdated = false;
@@ -353,21 +366,28 @@ namespace trackrForms
             bool isPositive = tableLayout.GetControlFromPosition(0, row).Text.Substring(0,1) == "+";
             decimal goal = Decimal.Parse(tableLayout.GetControlFromPosition(1, row).Text);
 
-            Color color;
-            
-            if ((isPositive && num.Value >= goal) || (!isPositive&& num.Value <= goal))
+            //Color bcolor, fcolor;
+
+            if ((isPositive && num.Value >= goal) || (!isPositive && num.Value <= goal))
             {
-                color = Color.LightGreen;
-                
+                tableLayout.GetControlFromPosition(0, row).ForeColor = Color.Green;
+                tableLayout.GetControlFromPosition(2, row).BackColor = Color.LightGreen;
             }
             else
             {
-                color = SystemColors.Control;
+                tableLayout.GetControlFromPosition(0, row).ForeColor = SystemColors.ControlText;
+                tableLayout.GetControlFromPosition(2, row).BackColor = SystemColors.Control;
             }
+
+            /*
+            tableLayout.GetControlFromPosition(0, row).ForeColor = fcolor;
+            tableLayout.GetControlFromPosition(2, row).BackColor = bcolor;
+            
             for (int i = 0; i < 4; i++)
             {
                 tableLayout.GetControlFromPosition(i, row).BackColor = color;
             }
+            */
 
         }
 
@@ -382,20 +402,29 @@ namespace trackrForms
             TableLayoutPanelCellPosition p = tableLayout.GetPositionFromControl(C);
             int row = p.Row;
 
-            Color color;
+            //Color bcolor, fcolor;
 
+            tableLayout.GetControlFromPosition(0, row).ForeColor = chk.Checked ? Color.Green : SystemColors.ControlText;
+
+            /*
             if (chk.Checked)
             {
-                color = Color.LightGreen;
+                tableLayout.GetControlFromPosition(0, row).ForeColor = Color.Green;
             }
             else
             {
-                color = SystemColors.Control;
+                tableLayout.GetControlFromPosition(0, row).ForeColor = SystemColors.ControlText;
             }
+
+            
+            tableLayout.GetControlFromPosition(0, row).ForeColor = fcolor;
+            tableLayout.GetControlFromPosition(2, row).BackColor = bcolor;
+            
             for (int i = 0; i < 4; i++)
             {
                 tableLayout.GetControlFromPosition(i, row).BackColor = color;
             }
+            */
         }
 
         private void displayMetricsButton_Click(object sender, EventArgs e)

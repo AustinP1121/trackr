@@ -32,7 +32,6 @@ namespace trackrForms
             this.components = new System.ComponentModel.Container();
             this.newHabitButton = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.todaysProgressLabel = new System.Windows.Forms.Label();
@@ -70,19 +69,12 @@ namespace trackrForms
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.syncToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(1179, 28);
             this.menuStrip.TabIndex = 3;
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
             // 
             // syncToolStripMenuItem
             // 
@@ -249,9 +241,9 @@ namespace trackrForms
             this.dailyDashboardContainer.Controls.Add(this.goalColumnLabel);
             this.dailyDashboardContainer.Controls.Add(this.displayMetricsButton);
             this.dailyDashboardContainer.Location = new System.Drawing.Point(168, 33);
-            this.dailyDashboardContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dailyDashboardContainer.Margin = new System.Windows.Forms.Padding(4);
             this.dailyDashboardContainer.Name = "dailyDashboardContainer";
-            this.dailyDashboardContainer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dailyDashboardContainer.Padding = new System.Windows.Forms.Padding(4);
             this.dailyDashboardContainer.Size = new System.Drawing.Size(787, 615);
             this.dailyDashboardContainer.TabIndex = 11;
             this.dailyDashboardContainer.TabStop = false;
@@ -285,7 +277,6 @@ namespace trackrForms
 
         private System.Windows.Forms.Button newHabitButton;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayout;
         private System.Windows.Forms.Label habitColumnLabel;

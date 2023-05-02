@@ -111,7 +111,7 @@ namespace trackrForms
 
             foreach(char c in newHabitNameTextBox.Text)
             {
-                if(!(char.IsLetter(c) || c == ' ' || c == '\'' || c == '\"' || c == ',' || c == '?' || c == '!' || c == '.'))
+                if(!(char.IsLetterOrDigit(c) || c == ' ' || c == '\'' || c == '\"' || c == ',' || c == '?' || c == '!' || c == '.'))
                 {
                     MessageBox.Show("Please only enter letters and special characters from the list ([ ], [\'], [\"], [,], [?], [!], [.]).");
                     return;
