@@ -70,12 +70,7 @@ namespace trackrForms
                         completions++;
                 }
 
-                double numDays = (int)(today - firstDate).TotalDays;
-
-                if (numDays == 0)
-                {
-                    numDays = 1;
-                }
+                double numDays = (int)(today - firstDate).TotalDays + 1.0;
 
                 double percentCompletion = (completions / numDays  * 100);
 
