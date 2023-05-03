@@ -179,6 +179,8 @@ namespace trackrForms
                     tableLayout.Controls.Add(todaysValue, 2, currentRow);
                     //Adds event to be associated with conditional formating
                     todaysValue.ValueChanged += new System.EventHandler(numericChanged);
+
+                    numericChanged(todaysValue, EventArgs.Empty);
                 }
 
                 //case for binary goal
@@ -218,8 +220,6 @@ namespace trackrForms
         //The user input on the dashboard gets uploaded into the habitHistory table
         private void UploadCurrentProgress()
         {
-            List<string> habitsOnDD = new List<string>();
-
             string today = DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM";
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = new trackrDBDataSet.habitHistoryTableDataTable();
             habitHistoryTableTableAdapter.FillByDateJoiningIncludingNotTracked(habitHistory, DateTime.Parse(today));
@@ -290,6 +290,7 @@ namespace trackrForms
                 else if (c is NumericUpDown)
                 {
                     NumericUpDown num = (NumericUpDown)c;
+                    
                     todaysValue = (decimal)(num.Value);
                     if (positive && todaysValue >= todaysGoal)
                     {
@@ -324,14 +325,13 @@ namespace trackrForms
                 tableLayout.GetControlFromPosition(0, row).ForeColor = Color.Green;
                 tableLayout.GetControlFromPosition(2, row).BackColor = Color.LightGreen;
             }
+
             //Case if goal is not met - default colors
             else
             {
                 tableLayout.GetControlFromPosition(0, row).ForeColor = SystemColors.ControlText;
                 tableLayout.GetControlFromPosition(2, row).BackColor = SystemColors.Control;
             }
-
-
         }
 
         private void checkChanged(object sender, EventArgs e)

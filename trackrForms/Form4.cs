@@ -143,7 +143,10 @@ namespace trackrForms
             {
                 if(i == habitHistory.Rows.Count - 1)
                 {
-                    habitHistoryTableTableAdap.UpdateEditHabit(newHabitNameTextBox.Text, Decimal.Parse(thresholdNumericUpDown.Text), originalHabit, DateTime.Today);
+                    decimal newThreshold = Decimal.Parse(thresholdNumericUpDown.Text);
+
+                    //  habit name, new threshold, is today's value greater than new threshold
+                    habitHistoryTableTableAdap.UpdateEditHabit(newHabitNameTextBox.Text, newThreshold, (decimal)habitHistory.Rows[i].ItemArray[3] >= newThreshold, originalHabit, DateTime.Today);
                 }
                 else
                 {
