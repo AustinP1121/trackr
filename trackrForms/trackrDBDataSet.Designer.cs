@@ -1703,7 +1703,7 @@ namespace trackrForms.trackrDBDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[9];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[10];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, habit, [dateTime], todaysValue, todaysGoal, goalMet FROM habitHistoryT" +
@@ -1716,11 +1716,11 @@ namespace trackrForms.trackrDBDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT habitHistoryTable.habit, habitHistoryTable.[dateTime], habitHistoryTable.todaysValue, habitHistoryTable.todaysGoal, habitHistoryTable.goalMet, habitTable.type, habitTable.currentGoal, habitTable.isPositive, habitTable.currentlyTracked, 
-                  habitTable.Streak, habitTable.longestStreak
-FROM     (habitHistoryTable INNER JOIN
-                  habitTable ON habitHistoryTable.habit = habitTable.habit)
-WHERE  (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = true)";
+            this._commandCollection[2].CommandText = @"SELECT        habitHistoryTable.habit, habitHistoryTable.[dateTime], habitHistoryTable.todaysValue, habitHistoryTable.todaysGoal, habitHistoryTable.goalMet, habitTable.type, habitTable.currentGoal, habitTable.isPositive, 
+                         habitTable.currentlyTracked, habitTable.Streak, habitTable.longestStreak
+FROM            (habitHistoryTable INNER JOIN
+                         habitTable ON habitHistoryTable.habit = habitTable.habit)
+WHERE        (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = true)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
@@ -1745,31 +1745,41 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE       habitHistoryTable\r\nSET                habit = ?, todaysGoal = ?, goa" +
-                "lMet = ?\r\nWHERE        (habit = ?) AND ([dateTime] = ?)";
+            this._commandCollection[6].CommandText = @"SELECT        habitHistoryTable.habit, habitHistoryTable.[dateTime], habitHistoryTable.todaysValue, habitHistoryTable.todaysGoal, habitHistoryTable.goalMet, habitTable.type, habitTable.currentGoal, habitTable.isPositive, 
+                         habitTable.currentlyTracked, habitTable.Streak, habitTable.longestStreak
+FROM            (habitHistoryTable INNER JOIN
+                         habitTable ON habitHistoryTable.habit = habitTable.habit)
+WHERE        (habitHistoryTable.[dateTime] = ?) AND (habitTable.currentlyTracked = true) AND (habitHistoryTable.habit = ?)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("todaysGoal", global::System.Data.OleDb.OleDbType.Numeric, 0, global::System.Data.ParameterDirection.Input, ((byte)(18)), ((byte)(3)), "todaysGoal", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("goalMet", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "goalMet", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "UPDATE       habitHistoryTable\r\nSET                habit = ?\r\nWHERE        (habit" +
-                " = ?) AND ([dateTime] = ?)";
+            this._commandCollection[7].CommandText = "UPDATE       habitHistoryTable\r\nSET                habit = ?, todaysGoal = ?, goa" +
+                "lMet = ?\r\nWHERE        (habit = ?) AND ([dateTime] = ?)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("todaysGoal", global::System.Data.OleDb.OleDbType.Numeric, 0, global::System.Data.ParameterDirection.Input, ((byte)(18)), ((byte)(3)), "todaysGoal", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("goalMet", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "goalMet", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[8] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "UPDATE       habitHistoryTable\r\nSET                todaysValue = ?, goalMet = ?\r\n" +
-                "WHERE        (habit = ?) AND ([dateTime] = ?)";
+            this._commandCollection[8].CommandText = "UPDATE       habitHistoryTable\r\nSET                habit = ?\r\nWHERE        (habit" +
+                " = ?) AND ([dateTime] = ?)";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("todaysValue", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(15)), ((byte)(0)), "todaysValue", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("goalMet", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "goalMet", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[9] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = "UPDATE       habitHistoryTable\r\nSET                todaysValue = ?, goalMet = ?\r\n" +
+                "WHERE        (habit = ?) AND ([dateTime] = ?)";
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("todaysValue", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(15)), ((byte)(0)), "todaysValue", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("goalMet", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "goalMet", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_dateTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "dateTime", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1902,6 +1912,44 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(habit));
+            }
+            trackrDBDataSet.habitHistoryTableDataTable dataTable = new trackrDBDataSet.habitHistoryTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByHabitAndDateJoining(trackrDBDataSet.habitHistoryTableDataTable dataTable, System.DateTime dateTime, string habit) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(dateTime));
+            if ((habit == null)) {
+                throw new global::System.ArgumentNullException("habit");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(habit));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual trackrDBDataSet.habitHistoryTableDataTable GetDataByHabitAndDateJoining(System.DateTime dateTime, string habit) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(dateTime));
+            if ((habit == null)) {
+                throw new global::System.ArgumentNullException("habit");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(habit));
             }
             trackrDBDataSet.habitHistoryTableDataTable dataTable = new trackrDBDataSet.habitHistoryTableDataTable();
             this.Adapter.Fill(dataTable);
@@ -2135,7 +2183,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int UpdateEditHabit(string habit, global::System.Nullable<decimal> todaysGoal, bool goalMet, string Original_habit, System.DateTime Original_dateTime) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[6];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[7];
             if ((habit == null)) {
                 throw new global::System.ArgumentNullException("habit");
             }
@@ -2177,7 +2225,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int UpdateHabitName(string habit, string Original_habit, System.DateTime Original_dateTime) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[7];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[8];
             if ((habit == null)) {
                 throw new global::System.ArgumentNullException("habit");
             }
@@ -2212,7 +2260,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int UpdateTodaysProgress(global::System.Nullable<decimal> todaysValue, global::System.Nullable<bool> goalMet, string Original_habit, System.DateTime Original_dateTime) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[8];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[9];
             if ((todaysValue.HasValue == true)) {
                 command.Parameters[0].Value = ((decimal)(todaysValue.Value));
             }
@@ -2457,7 +2505,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[6];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[7];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, habit, type, currentGoal, isPositive, currentlyTracked, Streak, longes" +
@@ -2475,28 +2523,34 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT ID, Streak, currentGoal, currentlyTracked, habit, isPositive, longestStrea" +
-                "k, previousHabitName, type FROM habitTable WHERE (habit = ?)";
+            this._commandCollection[3].CommandText = "SELECT ID, habit, type, currentGoal, isPositive, currentlyTracked, Streak, longes" +
+                "tStreak, previousHabitName\r\nFROM     habitTable\r\nWHERE (habit = ?)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE       habitTable\r\nSET                habit = ?, currentGoal = ?, currently" +
-                "Tracked = ?, previousHabitName = ?\r\nWHERE        (habit = ?)";
+            this._commandCollection[4].CommandText = "SELECT ID, Streak, currentGoal, currentlyTracked, habit, isPositive, longestStrea" +
+                "k, previousHabitName, type FROM habitTable WHERE (habit = ?)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("currentGoal", global::System.Data.OleDb.OleDbType.Numeric, 0, global::System.Data.ParameterDirection.Input, ((byte)(18)), ((byte)(3)), "currentGoal", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("currentlyTracked", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "currentlyTracked", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("previousHabitName", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "previousHabitName", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE habitTable\r\nSET          Streak = ?, longestStreak = ?\r\nWHERE  (habit = ?)" +
-                "";
+            this._commandCollection[5].CommandText = "UPDATE       habitTable\r\nSET                habit = ?, currentGoal = ?, currently" +
+                "Tracked = ?, previousHabitName = ?\r\nWHERE        (habit = ?)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Streak", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Streak", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("longestStreak", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "longestStreak", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("currentGoal", global::System.Data.OleDb.OleDbType.Numeric, 0, global::System.Data.ParameterDirection.Input, ((byte)(18)), ((byte)(3)), "currentGoal", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("currentlyTracked", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "currentlyTracked", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("previousHabitName", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "previousHabitName", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE habitTable\r\nSET          Streak = ?, longestStreak = ?\r\nWHERE  (habit = ?)" +
+                "";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Streak", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Streak", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("longestStreak", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "longestStreak", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_habit", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "habit", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2551,7 +2605,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByType(trackrDBDataSet.habitTableDataTable dataTable, string habit) {
+        public virtual int FillByHabit(trackrDBDataSet.habitTableDataTable dataTable, string habit) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((habit == null)) {
                 throw new global::System.ArgumentNullException("habit");
@@ -2570,8 +2624,44 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual trackrDBDataSet.habitTableDataTable GetByType(string habit) {
+        public virtual trackrDBDataSet.habitTableDataTable GetDataByHabit(string habit) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((habit == null)) {
+                throw new global::System.ArgumentNullException("habit");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(habit));
+            }
+            trackrDBDataSet.habitTableDataTable dataTable = new trackrDBDataSet.habitTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByType(trackrDBDataSet.habitTableDataTable dataTable, string habit) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((habit == null)) {
+                throw new global::System.ArgumentNullException("habit");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(habit));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual trackrDBDataSet.habitTableDataTable GetByType(string habit) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((habit == null)) {
                 throw new global::System.ArgumentNullException("habit");
             }
@@ -2929,7 +3019,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int UpdateHabitEntry(string habit, global::System.Nullable<decimal> currentGoal, bool currentlyTracked, string previousHabitName, string Original_habit) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[4];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[5];
             if ((habit == null)) {
                 throw new global::System.ArgumentNullException("habit");
             }
@@ -2977,7 +3067,7 @@ WHERE        (habitHistoryTable.[dateTime] = ?)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateStreak(global::System.Nullable<int> Streak, global::System.Nullable<int> longestStreak, string Original_habit) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[5];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[6];
             if ((Streak.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(Streak.Value));
             }

@@ -133,13 +133,45 @@ namespace trackrForms
                     currentlyTrackingCheckBox.Checked, originalHabit, originalHabit);
             }
 
-            //  Get all habit entries with this name in habitHistoryTable
-            //  Since in descending order, the first one should be updated with new name and new goa'l
-            //  All others should not be.
+            //  If there is no habit for today but it is being tracked
+            if (currentlyTrackingCheckBox.Checked)
+            {
+                trackrDBDataSet.habitHistoryTableDataTable currentHabit = habitHistoryTableTableAdap.GetDataByHabitAndDateJoining(DateTime.Today, newHabitNameTextBox.Text);
+
+                //  No habit exists
+                if (currentHabit.Rows.Count == 0)
+                {
+                    trackrDBDataSet.habitTableDataTable currentHabitInfo = habitTableTableAdap.GetDataByHabit(newHabitNameTextBox.Text);
+                    try
+                    {
+                        string name = newHabitNameTextBox.Text;
+                        string type = currentHabitInfo.Rows[0].ItemArray[2].ToString();
+                        decimal goal = type == "Binary" ? 1 : Decimal.Parse(thresholdNumericUpDown.Value.ToString());
+                        bool positive = Convert.ToBoolean(currentHabitInfo.Rows[0].ItemArray[4]);
+                        DateTime today = DateTime.Parse(DateTime.Now.ToString("M/dd/yyyy ") + "12:00:00 AM");
+                        bool goalMet = false;
+                        if (positive && 0 >= goal)
+                        {
+                            goalMet = true;
+                        }
+                        else if (!positive && 0 <= goal)
+                        {
+                            goalMet = true;
+                        }
+
+                        //Initialize entry to default value of 0
+                        habitHistoryTableTableAdap.Insert(name, today, 0, goal, goalMet);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
 
             trackrDBDataSet.habitHistoryTableDataTable habitHistory = habitHistoryTableTableAdap.GetByHabit(originalHabit);
 
-            for(int i = 0; i < habitHistory.Rows.Count; i++)
+            for (int i = 0; i < habitHistory.Rows.Count; i++)
             {
                 if(i == habitHistory.Rows.Count - 1)
                 {
